@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BwXgSG2aYgm4ejbc/++I2s6YjBXHBjuhhLuRCS03d0J7nfl0CG+/mOzTdGGMysngDT65ZA9GrJtKyIosvxCKdw==",
+  "dgSpecHash": "ZP17m3GDZYUMkpA0pRyoWlO2kB8WZIKrpAPkkGHM120ZwlmdF26vvlXohWNY0miY+6R2BKFVi6ynvrFIAQxbKg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.5\\microsoft.aspnetcore.authentication.jwtbearer.3.1.5.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",

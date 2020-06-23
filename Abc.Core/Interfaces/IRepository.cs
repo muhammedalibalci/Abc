@@ -1,17 +1,23 @@
 ﻿using Abc.Core.Entities;
+using Abc.Core.Specifications;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Abc.Core.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
-        Task<TEntity> GetByIdAsync(int id);
-        Task<List<TEntity>> ListAsync();
-        Task<TEntity> AddAsync(TEntity entity);
-        Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(int id);
+        Task<T> GetByIdAsync(int id);
+        Task<IReadOnlyList<T>> ListAllAsync();
+        Task<T> GetEntityWithSpec(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
+        Task<int> CounAsync(ISpecification<T> spec);
+
+        Task<T> Add(T entity);
+        Task<T> Delete(T  entity);
+        Task<T> Update(T entity);
     }
 }

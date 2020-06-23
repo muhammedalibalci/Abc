@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Abc.Infrastructure
+namespace Abc.Infrastructure.Data
 {
     public class EfDbContext : DbContext
     {
@@ -24,5 +24,7 @@ namespace Abc.Infrastructure
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

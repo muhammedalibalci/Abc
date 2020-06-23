@@ -15,14 +15,14 @@ namespace Abc.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private IMapper _mapper;
         private ITokenService _tokenService;
         readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        public AuthController(IMapper mapper, ITokenService tokenService,UserManager<User> userManager,
+        public AuthController(
+            ITokenService tokenService,
+            UserManager<User> userManager,
             SignInManager<User> signInManager)
         {
-            _mapper = mapper;
             _tokenService = tokenService;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -39,7 +39,7 @@ namespace Abc.API.Controllers
         public async Task<ActionResult<UserDto>> Login(AuthDto loginDto)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
-            
+
             if (user == null)
             {
                 return Unauthorized(new APIResponse(401));
@@ -54,7 +54,7 @@ namespace Abc.API.Controllers
 
             return new UserDto
             {
-                Id= user.Id,
+                Id = user.Id,
                 Token = _tokenService.CreateToken(user),
                 Name = user.Name
             };
@@ -78,12 +78,11 @@ namespace Abc.API.Controllers
                 Email = registerDto.Email,
             };
 
-            user.UserName = "test";
-            
+
             var result = await _userManager.CreateAsync(user, registerDto.Password);
-            
+
             if (!result.Succeeded) return BadRequest(new APIResponse(400));
-            
+
             return new UserDto
             {
                 Id = user.Id,

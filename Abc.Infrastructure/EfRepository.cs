@@ -1,5 +1,7 @@
 ﻿using Abc.Core.Entities;
 using Abc.Core.Interfaces;
+using Abc.Core.Specifications;
+using Abc.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,58 +12,60 @@ using System.Threading.Tasks;
 
 namespace Abc.Infrastructure
 {
-    public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+    public class EfRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly EfDbContext _dbContext;
+        private readonly EfDbContext _context;
+        public EfRepository(EfDbContext context)
+        {
+            _context = context;
+        }
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _context.Set<T>().FindAsync(id);
+        }
 
-        private readonly DbSet<TEntity> _dbSet;
-        public EfRepository(EfDbContext dbContext)
+        public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            _dbContext = dbContext;
-            _dbSet = dbContext.Set<TEntity>();
+            return await _context.Set<T>().ToListAsync();
+        }
 
-        }
-        public TEntity GetById(int id)
+        public async Task<T> GetEntityWithSpec(ISpecification<T> spec)
         {
-            return _dbSet.SingleOrDefault(e => e.Id == id);
+            return await ApplySpecification(spec).FirstOrDefaultAsync();
         }
-        public Task<TEntity> GetByIdAsync(int id)
+
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {
-            return _dbSet.SingleOrDefaultAsync(e => e.Id == id);
+            return await ApplySpecification(spec).ToListAsync();
         }
-       
-        public Task<List<TEntity>> ListAsync()
+        public async Task<int> CounAsync(ISpecification<T> spec)
         {
-            return _dbSet.ToListAsync();
+            return await ApplySpecification(spec).CountAsync();
         }
-        public async Task<TEntity> AddAsync(TEntity entity)
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
-            await _dbSet.AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
+        }
+
+        public async Task<T> Add(T entity)
+        {
+            await _context.AddAsync(entity);
             return entity;
         }
-        public async Task UpdateAsync(TEntity entity)
+
+        public async Task<T> Update(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public async Task DeleteAsyncTEntity(TEntity entity)
+        public async Task<T> Delete(T entity)
         {
-            _dbSet.Remove(entity);
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public async Task DeleteAsync(int id)
-        {
-            var entity = await GetByIdAsync(id);
-            _dbSet.Remove(entity);
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public Task<TEntity> GetByWhereAsync()
-        {
-            throw new NotImplementedException();
+            _context.Remove(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }

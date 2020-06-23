@@ -1,14 +1,13 @@
 using Abc.API.Extensions;
-using Abc.API.Helpers;
-using Abc.API.Middleware;
-using Abc.Core.Entities;
 using Abc.Core.Interfaces;
 using Abc.Core.Services;
 using Abc.Infrastructure;
+using Abc.Infrastructure.Data;
 using AutoMapper;
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,10 +26,11 @@ namespace Abc.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers()
+        .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+        .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddIdentityServices(Configuration);
-
-            services.AddControllers();
 
             services.AddDbContext<EfDbContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("Abc.API")));
@@ -40,6 +40,7 @@ namespace Abc.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IPostService, PostService>();
 
             services.AddAutoMapper(typeof(Startup));
 

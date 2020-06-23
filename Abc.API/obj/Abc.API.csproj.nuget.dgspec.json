@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\balci\\source\\repos\\Abc\\Abc.API\\Abc.API.csproj": {}
+    "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\Abc.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\balci\\source\\repos\\Abc\\Abc.API\\Abc.API.csproj": {
+    "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\Abc.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.API\\Abc.API.csproj",
+        "projectUniqueName": "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\Abc.API.csproj",
         "projectName": "Abc.API",
-        "projectPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.API\\Abc.API.csproj",
+        "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\Abc.API.csproj",
         "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.API\\obj\\",
+        "outputPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj"
+              "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj"
               }
             }
           }
@@ -51,6 +51,10 @@
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.5, )"
             },
@@ -97,14 +101,14 @@
         }
       }
     },
-    "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Core\\Abc.Core.csproj": {
+    "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Core\\Abc.Core.csproj",
+        "projectUniqueName": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj",
         "projectName": "Abc.Core",
-        "projectPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Core\\Abc.Core.csproj",
+        "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj",
         "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Core\\obj\\",
+        "outputPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -170,14 +174,14 @@
         }
       }
     },
-    "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj": {
+    "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj",
         "projectName": "Abc.Infrastructure",
-        "projectPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\Abc.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -193,8 +197,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Core\\Abc.Core.csproj": {
-                "projectPath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.Core\\Abc.Core.csproj"
+              "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj": {
+                "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj"
               }
             }
           }

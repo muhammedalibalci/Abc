@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Abc.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<T> GetRepository<T>() where T : BaseEntity;
-        int Complete();
+        IRepository<T> Repository<T>() where T : BaseEntity;
+        Task<int> Complete();
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/La/zl6WTTy18KKi3uzHX8cyyGhD27+PZwcTQ9dXJW8ydLoD1zkfrhKKl6Fse8q0lYvEKvw38k6Y4HuEKyDXgQ==",
+  "dgSpecHash": "JltfP6OLuoCXnVMsllatFsX2FTadNHuYxWcVRbRm9B4ssSu9gxltTDqMLpRwG6IwM4P47FBHlSk6MuaE9rOByg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\balci\\source\\repos\\Abc\\Abc.API\\Abc.API.csproj",
+  "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\Abc.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\balci\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
@@ -23,6 +23,8 @@
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.2.0\\microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.5\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.5.nupkg.sha512",
+    "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.5\\microsoft.aspnetcore.jsonpatch.3.1.5.nupkg.sha512",
+    "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.5\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.5.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
@@ -60,6 +62,7 @@
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\balci\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\npgsql\\4.1.3.1\\npgsql.4.1.3.1.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\3.1.4\\npgsql.entityframeworkcore.postgresql.3.1.4.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

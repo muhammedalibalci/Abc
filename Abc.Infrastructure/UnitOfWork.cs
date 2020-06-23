@@ -1,42 +1,41 @@
 ﻿using Abc.Core.Entities;
 using Abc.Core.Interfaces;
+using Abc.Infrastructure.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Abc.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EfDbContext _dbContext;
+        private readonly EfDbContext _context;
 
-        public UnitOfWork(EfDbContext dbContext)
+        // Any repository is getting used as part UOW, will be store in hash table.
+        private Hashtable _repositories;
+        public UnitOfWork(EfDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
-        public int Complete()
+
+        public async Task<int> Complete()
         {
-            try
-            {
-                // Transaction işlemleri burada ele alınabilir veya Identity Map kurumsal tasarım kalıbı kullanılarak
-                // sadece değişen alanları güncellemeyide sağlayabiliriz.
-                return _dbContext.SaveChanges();
-            }
-            catch
-            {
-                // Burada DbEntityValidationException hatalarını handle edebiliriz.
-                throw;
-            }
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            _dbContext.Dispose();
+            _context.Dispose();
         }
 
-        public IRepository<T> GetRepository<T>() where T : BaseEntity
-        {
-            return new EfRepository<T>(_dbContext);
+        public IRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
+        { 
+
+            return new EfRepository<TEntity>(_context);
         }
+
+      
     }
 }
