@@ -56,7 +56,7 @@ namespace Abc.API.Controllers
             {
                 Id = user.Id,
                 Token = _tokenService.CreateToken(user),
-                Name = user.Name
+                UserName = user.UserName
             };
         }
 
@@ -76,8 +76,8 @@ namespace Abc.API.Controllers
             {
                 Name = registerDto.Name,
                 Email = registerDto.Email,
+                UserName = registerDto.UserName
             };
-
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
@@ -86,7 +86,6 @@ namespace Abc.API.Controllers
             return new UserDto
             {
                 Id = user.Id,
-                Name = registerDto.Name,
                 Token = _tokenService.CreateToken(user),
             };
 

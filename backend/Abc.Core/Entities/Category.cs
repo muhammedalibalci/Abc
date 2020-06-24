@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Abc.Core.Entities
 {
-    [Table("Category")]
     public class Category : BaseEntity
     {
         public string Name { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

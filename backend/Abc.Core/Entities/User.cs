@@ -6,11 +6,15 @@ using System.Text;
 
 namespace Abc.Core.Entities
 {
-    [Table("User")]
     public class User : IdentityUser 
     {
         public string Name { get; set; }
+        public string LastName { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public int? AddressId { get; set; }
+        public Address Address { get; set; }
+        public List<Order> Orders { get; set; }
+       
+        public List<CartItem> CartItems { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace Abc.Core.Services
         {
             var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.Name, user.Id),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.GivenName, user.Name)
             };

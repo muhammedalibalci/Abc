@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Abc.API
 {
@@ -32,15 +33,24 @@ namespace Abc.API
 
             services.AddIdentityServices(Configuration);
 
+
+
             services.AddDbContext<EfDbContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("Abc.API")));
+                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), options =>
+                    {
+                        options.SetPostgresVersion(new Version("9.6"));
+                        options.MigrationsAssembly("Abc.API");
+                    }));
+
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ICartItemService, CartItemService>();
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -60,6 +70,7 @@ namespace Abc.API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

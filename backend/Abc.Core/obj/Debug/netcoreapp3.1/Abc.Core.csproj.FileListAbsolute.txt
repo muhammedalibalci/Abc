@@ -22,3 +22,15 @@ C:\Users\balci\Desktop\Abc\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.dll
 C:\Users\balci\Desktop\Abc\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.pdb
 C:\Users\balci\Desktop\Abc\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.genruntimeconfig.cache
 C:\Users\balci\Desktop\Abc\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.csprojAssemblyReference.cache
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\bin\Debug\netcoreapp3.1\Abc.Core.deps.json
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\bin\Debug\netcoreapp3.1\Abc.Core.runtimeconfig.json
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\bin\Debug\netcoreapp3.1\Abc.Core.runtimeconfig.dev.json
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\bin\Debug\netcoreapp3.1\Abc.Core.dll
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\bin\Debug\netcoreapp3.1\Abc.Core.pdb
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.AssemblyInfoInputs.cache
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.AssemblyInfo.cs
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.csproj.CoreCompileInputs.cache
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.dll
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.pdb
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.genruntimeconfig.cache
+C:\Users\balci\Desktop\Abc\backend\Abc.Core\obj\Debug\netcoreapp3.1\Abc.Core.csprojAssemblyReference.cache

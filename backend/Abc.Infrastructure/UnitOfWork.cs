@@ -13,8 +13,6 @@ namespace Abc.Infrastructure
     {
         private readonly EfDbContext _context;
 
-        // Any repository is getting used as part UOW, will be store in hash table.
-        private Hashtable _repositories;
         public UnitOfWork(EfDbContext context)
         {
             _context = context;

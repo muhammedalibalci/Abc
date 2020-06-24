@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wa8Eyi5h3OkzqQo9LGeH+FHguutCVT0t/BG+LDXom5Nne/85bc4Y1RnnCoxZbRFyWvlQIt4t8V0Mxbcf9JaP/g==",
+  "dgSpecHash": "zklXcSwRrBN0Ygk600Q/jZqVKmWo+FDYlwG42xsE6iNbowqCF2GkpnzXENkStvMjR8n8dD2pcWYrwobY49Vnig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj",
+  "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\backend\\Abc.Core\\Abc.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.5\\microsoft.aspnetcore.authentication.jwtbearer.3.1.5.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

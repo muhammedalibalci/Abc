@@ -4297,11 +4297,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj",
+      "projectUniqueName": "C:\\Users\\balci\\Desktop\\Abc\\backend\\Abc.Core\\Abc.Core.csproj",
       "projectName": "Abc.Core",
-      "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\Abc.Core.csproj",
+      "projectPath": "C:\\Users\\balci\\Desktop\\Abc\\backend\\Abc.Core\\Abc.Core.csproj",
       "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.Core\\obj\\",
+      "outputPath": "C:\\Users\\balci\\Desktop\\Abc\\backend\\Abc.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",

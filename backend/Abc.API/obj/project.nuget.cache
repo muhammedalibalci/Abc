@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JltfP6OLuoCXnVMsllatFsX2FTadNHuYxWcVRbRm9B4ssSu9gxltTDqMLpRwG6IwM4P47FBHlSk6MuaE9rOByg==",
+  "dgSpecHash": "cmfbLX55PVZcfURh7FcQsb51aqL4H4nlcNs6J/N3gMFtejUxc1+e1Fgq+2+qcv4LRqCnayAbVA9Dc1CbA1rvgw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\Abc.API\\Abc.API.csproj",
+  "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\backend\\Abc.API\\Abc.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\balci\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
