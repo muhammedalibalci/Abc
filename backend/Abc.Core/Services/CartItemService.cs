@@ -1,5 +1,6 @@
 ﻿using Abc.Core.Entities;
 using Abc.Core.Interfaces;
+using Abc.Core.Specifications;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -19,13 +20,22 @@ namespace Abc.Core.Services
             _userManager = userManager;
         }
 
-        public async Task<bool> Insert(CartItem cartItem,string userId)
+        public Task<IReadOnlyList<CartItem>> GetAll(string userId)
+        {
+            var spec = new CardItemSpecification(userId);
+
+            var cartItems = _unitOfWork.Repository<CartItem>().ListAsync(spec);
+
+            return cartItems;
+        }
+
+        public async Task<CartItem> Insert(CartItem cartItem,string userId)
         {
             cartItem.UserId = userId;
 
             await _unitOfWork.Repository<CartItem>().Add(cartItem);
 
-            return true;
+            return cartItem;
         }
 
        

@@ -33,6 +33,11 @@ namespace Abc.API
 
             services.AddIdentityServices(Configuration);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.AllowAnyOrigin());
+            });
 
 
             services.AddDbContext<EfDbContext>(options =>
@@ -51,6 +56,7 @@ namespace Abc.API
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ICartItemService, CartItemService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -69,7 +75,15 @@ namespace Abc.API
 
             app.UseRouting();
 
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            });
+
+
             app.UseAuthorization();
+
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>

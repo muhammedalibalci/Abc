@@ -32,13 +32,17 @@ namespace Abc.Core.Services
 
             if (!cartItems.Any() || user == null) { return null; }
 
-            var order = CreateOrder(user, cartItems,  addressId);
 
+            Order order = new Order
+            {
+                UserId = user.Id,
+                AddressId = user.AddressId,
+                User = user,
+                Amount = 1,
+                Status = "InProgress"
+            };
 
-
-           
-
-           var newOrder =  await _unitOfWork.Repository<Order>().Add(order);
+            var newOrder =  await _unitOfWork.Repository<Order>().Add(order);
 
             var items = new List<OrderItem>();
 
@@ -53,37 +57,8 @@ namespace Abc.Core.Services
                 items.Add(orderItem);
             }
 
-
-            /*
-            var result = await _unitOfWork.Complete();
-
-            if (result <= 0) return null;
-            */
             return order;
         }
-
-        private static Order CreateOrder( User user, IReadOnlyList<CartItem> cartItems, int addressId)
-        {
-            return new Order
-            {
-                UserId = user.Id,
-                AddressId = user.AddressId,
-                User = user,
-                Amount = 1,
-                Status = "InProgress" 
-            };
-        }
-
-
-        private static void CreateOrderItem(Order order, CartItem item)
-        {
-            order.OrderItems.Add(new OrderItem
-            {
-               Quantity = item.Quantity,
-               ProductDetail = item.ProductDetail
-            });
-        }
-
 
 
 

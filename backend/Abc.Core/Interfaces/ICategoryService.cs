@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Abc.Core.Interfaces
 {
-    public interface ICartItemService
+    public interface ICategoryService
     {
-
-        Task<IReadOnlyList<CartItem>> GetAll(string userId);
-        Task<CartItem> Insert(CartItem cartItem, string userId);
+        Task<IReadOnlyList<Category>> GetAll();
 
     }
 }

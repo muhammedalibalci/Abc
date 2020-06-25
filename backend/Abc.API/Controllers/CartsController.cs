@@ -15,22 +15,32 @@ namespace Abc.API.Controllers
     {
         private ICartItemService _cartItemService;
         private UserManager<User> _userManager;
-
-
+        
         public CartsController(ICartItemService cartItemService, UserManager<User> userManager)
         {
             _cartItemService = cartItemService;
             _userManager = userManager;
         }
-
-
-        [HttpPost]
-        public async Task<ActionResult<CartItem>> AddOrder([FromBody] CartItem cartItem)
+        [HttpGet]
+        public async Task<ActionResult<CartItem>> GetAll()
         {
 
             var userId = HttpContext.User.Identity.Name;
+
+            var order = await _cartItemService.GetAll(userId);
+            
+            return Ok(order);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<CartItem>> AddCart([FromBody] CartItem cartItem)
+        {
+
+            var userId = HttpContext.User.Identity.Name;
+
             var order = await _cartItemService.Insert(cartItem, userId);
-            return Ok();
+
+            return Ok(order);
         }
     }
 }

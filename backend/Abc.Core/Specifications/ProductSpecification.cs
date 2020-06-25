@@ -12,6 +12,7 @@ namespace Abc.Core.Specifications
 
         {
             AddInclude(x => x.Category);
+            AddInclude(x => x.ProductDetails);
             ApplyPaging(productParams.PageSize * (productParams.PageIndex - 1), productParams.PageSize);
 
            
