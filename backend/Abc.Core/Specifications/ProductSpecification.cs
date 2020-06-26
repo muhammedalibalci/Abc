@@ -8,10 +8,10 @@ namespace Abc.Core.Specifications
     public class ProductSpecification : BaseSpecification<Product>
     {
 
-        public ProductSpecification(ProductSpecParams productParams)
+        public ProductSpecification(ProductSpecParams productParams,int id)
 
         {
-            AddInclude(x => x.Category);
+            AddWhere(x => x.CategoryId == id);
             AddInclude(x => x.ProductDetails);
             ApplyPaging(productParams.PageSize * (productParams.PageIndex - 1), productParams.PageSize);
 

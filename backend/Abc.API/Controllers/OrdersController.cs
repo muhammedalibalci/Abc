@@ -33,7 +33,6 @@ namespace Abc.API.Controllers
         {
 
             var userId = HttpContext.User.Identity.Name;
-            orderDTO.Address.UserId = userId;
             var order = await _orderService.Add(orderDTO.CartId, userId, 1);
 
             return Ok(order);

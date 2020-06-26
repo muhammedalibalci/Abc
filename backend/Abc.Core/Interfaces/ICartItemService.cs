@@ -11,6 +11,7 @@ namespace Abc.Core.Interfaces
 
         Task<IReadOnlyList<CartItem>> GetAll(string userId);
         Task<CartItem> Insert(CartItem cartItem, string userId);
+        Task<CartItem> Delete(int cartItemId);
 
     }
 }

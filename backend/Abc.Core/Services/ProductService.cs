@@ -15,17 +15,18 @@ namespace Abc.Core.Services
         {
             _unitOfWork = unitOfWork;
         }
-
       
         public async Task<Product> Get(int id)
         {
             return await _unitOfWork.Repository<Product>().GetByIdAsync(id);
         }
 
-        public async Task<IReadOnlyList<Product>> GetAll()
+        public async Task<IReadOnlyList<Product>> GetAll(int id)
         {
             ProductSpecParams ProductSpecParams = new ProductSpecParams();
-            var spec = new ProductSpecification(ProductSpecParams);
+
+            var spec = new ProductSpecification(ProductSpecParams,id);
+
             var data = await _unitOfWork.Repository<Product>().ListAsync(spec);
            
             return data;
@@ -37,8 +38,6 @@ namespace Abc.Core.Services
 
         public async Task<Product> Delete(int id)
         {
-
-
             Product product = await Get(id);
 
             if (product == null)

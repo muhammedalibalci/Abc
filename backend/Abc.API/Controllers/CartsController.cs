@@ -1,4 +1,5 @@
-﻿using Abc.Core.Entities;
+﻿using Abc.API.Errors;
+using Abc.Core.Entities;
 using Abc.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace Abc.API.Controllers
     {
         private ICartItemService _cartItemService;
         private UserManager<User> _userManager;
-        
+
         public CartsController(ICartItemService cartItemService, UserManager<User> userManager)
         {
             _cartItemService = cartItemService;
@@ -28,7 +29,7 @@ namespace Abc.API.Controllers
             var userId = HttpContext.User.Identity.Name;
 
             var order = await _cartItemService.GetAll(userId);
-            
+
             return Ok(order);
         }
 
@@ -41,6 +42,19 @@ namespace Abc.API.Controllers
             var order = await _cartItemService.Insert(cartItem, userId);
 
             return Ok(order);
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CartItem>> DeleteCart([FromRoute] int id)
+        {
+
+            var result = await _cartItemService.Delete(id);
+
+            if (result == null)
+            {
+                return NotFound(new APIResponse(404, "Such an id not found"));
+            }
+
+            return Ok(result);
         }
     }
 }

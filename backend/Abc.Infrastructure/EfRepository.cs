@@ -23,7 +23,10 @@ namespace Abc.Infrastructure
         {
             return await _context.Set<T>().FindAsync(id);
         }
-
+        public Task<T> GetSpecByIdAsync(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().Where(predicate).SingleOrDefaultAsync();
+        }
         public async Task<IReadOnlyList<T>> ListAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
@@ -57,8 +60,8 @@ namespace Abc.Infrastructure
 
         public async Task<T> Update(T entity)
         {
+            _context.Set<T>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
             return entity;
         }
 
@@ -68,5 +71,7 @@ namespace Abc.Infrastructure
             await _context.SaveChangesAsync();
             return entity;
         }
+
+      
     }
 }

@@ -20,6 +20,7 @@ namespace Abc.Core.Services
             _userManager = userManager;
         }
 
+
         public Task<IReadOnlyList<CartItem>> GetAll(string userId)
         {
             var spec = new CardItemSpecification(userId);
@@ -29,15 +30,34 @@ namespace Abc.Core.Services
             return cartItems;
         }
 
-        public async Task<CartItem> Insert(CartItem cartItem,string userId)
+        public async Task<CartItem> Insert(CartItem cartItem, string userId)
         {
             cartItem.UserId = userId;
 
-            await _unitOfWork.Repository<CartItem>().Add(cartItem);
+            var result = await _unitOfWork.Repository<CartItem>().Add(cartItem);
 
-            return cartItem;
+            var productDetail = await _unitOfWork.Repository<ProductDetail>().GetByIdAsync((int)result.ProductDetailId);
+            
+            var product = await _unitOfWork.Repository<Product>().GetByIdAsync((int)productDetail.ProductId);
+            
+            productDetail.Product = product;
+            
+            result.ProductDetail = productDetail;
+            return result;
         }
 
-       
+        public async Task<CartItem> Delete(int cartItemId)
+        {
+            CartItem cartItem = await _unitOfWork.Repository<CartItem>().GetByIdAsync(cartItemId);
+
+            if (cartItem == null) { return null; }
+
+
+            await _unitOfWork.Repository<CartItem>().Delete(cartItem);
+
+            return cartItem;
+
+        }
+
     }
 }

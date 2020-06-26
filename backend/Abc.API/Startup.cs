@@ -27,9 +27,10 @@ namespace Abc.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers()
-        .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-        .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddIdentityServices(Configuration);
 
@@ -47,18 +48,19 @@ namespace Abc.API
                         options.MigrationsAssembly("Abc.API");
                     }));
 
+            services.AddAutoMapper(typeof(Startup));
 
-            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddSingleton(typeof(IRepository<>), typeof(EfRepository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            //Services
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ICartItemService, CartItemService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
-            services.AddAutoMapper(typeof(Startup));
 
         }
 
@@ -80,7 +82,6 @@ namespace Abc.API
             {
                 options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             });
-
 
             app.UseAuthorization();
 

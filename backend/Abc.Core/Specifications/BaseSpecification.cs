@@ -21,7 +21,7 @@ namespace Abc.Core.Specifications
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
         public Expression<Func<T, object>> OrderBy { get; private set; }
-        public Expression<Func<T, object>> Where { get; private set; }
+        public Expression<Func<T, bool>> Where { get; private set; }
 
         public Expression<Func<T, object>> OrderByDesc { get; private set; }
 
@@ -45,7 +45,7 @@ namespace Abc.Core.Specifications
         {
             OrderByDesc = orderByDescExpression;
         }
-        protected void AddWhere(Expression<Func<T, object>> where)
+        protected void AddWhere(Expression<Func<T, bool>> where)
         {
             Where = where;
         }
