@@ -76,6 +76,23 @@ export const basket = {
                 }).catch(err => {
                     console.log(err);
                 })
+        },
+        updateCart(context,cart){
+            const token = localStorage.getItem('token');
+
+            Axios.put('https://localhost:44360/api/carts',
+            cart,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            })
+            .then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
         }
     },
 }

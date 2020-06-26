@@ -24,6 +24,11 @@ const routes = [
     component: () => import('../pages/AddressSection.vue')
   },
   {
+    path: '/order',
+    name: 'order',
+    component: () => import('../pages/Order.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../pages/Login.vue')

@@ -1,7 +1,7 @@
 <template>
   <div class="row p-4">
     <div class="col-xl-4">
-      <img src="../../assets/logo.png" class alt="..." />
+      <img :src="cart.productDetail.product.imageUrl" class alt="..." width="150"/>
     </div>
     <div class="col-xl-4 mt-4">
       <div class>{{cart.productDetail.product.name}}</div>
@@ -36,10 +36,14 @@ export default {
     },
     increaseProduct(cart) {
       cart.quantity++;
+      this.$store.dispatch("updateCart", cart);
     },
     decreaseProduct(cart) {
+      console.log(cart);
+
       if (cart.quantity > 0) {
         cart.quantity--;
+        this.$store.dispatch("updateCart", cart);
       }
       if (cart.quantity === 0) {
         this.$store.dispatch("deleteCartFromBasket", cart.id);

@@ -1,11 +1,10 @@
 <template>
-  <div class="products d-inline-block">
+  <div class="products">
     <div class="text-center">
       <PendingApiCall v-show="pendingApiCall" />
     </div>
     <section
-      class="card ml-4 mb-2 card-product d-inline-block"
-      style="width: 15rem;"
+      class="card ml-4 mb-2 p-2  card-product "
       v-for="product in products"
       :key="product.id"
     >
@@ -55,10 +54,16 @@ export default {
 
 
 <style>
+.products{
+    display: flex;
+  flex-wrap: wrap;
+}
 .card-product {
+  width: 300px;
   font-family: monospace;
 }
 .card-product:hover {
-  background-color: #f2f3f4;
+  width: 320px;
+
 }
 </style>

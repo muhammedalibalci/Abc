@@ -27,11 +27,12 @@
           {{address.phone}}
         </div>
       </div>
-      <div class="text-center mt-2" v-show="!pendingApiCall && hasAddress">
+      <div class="text-center mt-2 " v-show="!pendingApiCall && hasAddress">
         <button
           class="btn btn-success w-50"
           @click="visibleUpdateSection = !visibleUpdateSection "
         >Edit</button>
+        <button class="btn btn-danger w-50 " @click="onClickContinue" > Continue</button>
       </div>
       <UpdateSection
         v-if="this.visibleUpdateSection || !hasAddress"
@@ -81,6 +82,9 @@ export default {
           this.hasAddress = false;
           console.log(err);
         });
+    },
+    onClickContinue(){
+      this.$router.push('/order')
     }
   }
 };
