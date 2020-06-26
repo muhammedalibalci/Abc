@@ -19,6 +19,11 @@ const routes = [
     component: () => import('../pages/Basket.vue')
   },
   {
+    path: '/address',
+    name: 'address',
+    component: () => import('../pages/AddressSection.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../pages/Login.vue')

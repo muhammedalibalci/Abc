@@ -27,6 +27,9 @@ export const auth = {
         initErrors(state, errors) {
             state.errors = errors
         },
+        initLogout(state){
+            state.user = ""
+        }
     },
 
     actions: {
@@ -43,6 +46,10 @@ export const auth = {
                         reject(false);
                     })
             })
+        },
+        logout(context) {
+            localStorage.clear();
+            context.commit('initLogout');
         },
         register(context, user) {
             return new Promise((resolve, reject) => {

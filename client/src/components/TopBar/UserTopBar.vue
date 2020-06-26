@@ -7,10 +7,10 @@
         id="navbarDropdown"
         role="button"
         data-toggle="dropdown"
-      ><i class="fa fa-user"></i> {{this.userName}}</a>
+      ><i class="fa fa-user"></i> {{userName}}</a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">Account</a>
-        <a class="dropdown-item" href="#">Log out</a>
+        <span class="dropdown-item" @click="()=>this.$store.dispatch('logout')">Log out</span>
       </div>
     </li>
   </div>
@@ -26,4 +26,10 @@ export default {
 </script>
 
 <style>
+.dropdown-item{
+  font-family: 'Courier New', Courier, monospace;
+  font: 600;
+}
+
+
 </style>

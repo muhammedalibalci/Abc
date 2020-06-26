@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="col-xl-4 ">
-          <OrderSummary />
+          <OrderSummary :carts="carts" />
         </div>
       </div>
     </div>

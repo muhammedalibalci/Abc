@@ -1,12 +1,16 @@
 <template>
-  <div class="categories">
-    <h6 class="text-center">Categories</h6>
+  <div class="ml-3 mb-4 text-center">
     <div class="text-center">
       <PendingApiCall v-show="pendingApiCall" />
     </div>
-    <ul class="list-group " v-for="category in categories" :key="category.id">
-      <li class="list-group-item">{{category.name}}</li>
-    </ul>
+
+    <div class="category mr-2" v-for="category in categories" :key="category.id">
+      <span
+        class="card-inline"
+        :class="{'current-category':currentCategoryId === category.id}"
+        @click="switchProducts(category.id)"
+      >{{category.name}}</span>
+    </div>
   </div>
 </template>
 
@@ -25,6 +29,11 @@ export default {
       pendingApiCall: true
     };
   },
+  computed: {
+    currentCategoryId() {
+      return this.$store.getters.getCurrentCategoryId;
+    }
+  },
   created: function() {
     this.getCategories();
   },
@@ -34,20 +43,34 @@ export default {
         .then(res => {
           let categories = [...res.data];
           this.categories = categories;
-          this.pendingApiCall = false
+          this.pendingApiCall = false;
         })
         .catch(err => {
           console.log("Categories", err);
-           this.pendingApiCall = false
+          this.pendingApiCall = false;
         });
+    },
+    switchProducts(id) {
+      this.$store.dispatch("fetchProducts", id);
     }
   }
 };
 </script>
 
 <style >
-.categories{
-border: 1px solid gray;
-padding: 10px;
+.category {
+  display: inline-block;
+  padding: 15px;
+  border: 1px dashed gray;
+}
+.card-inline {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.current-category {
+  background: pink;
 }
 </style>

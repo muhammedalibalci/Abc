@@ -3,33 +3,25 @@
     <h4>Order Summary</h4>
     <hr />
     <div class="amount mb-4 mt-4">
-      <b>Subtotal : </b>
-      <span>$ {{amount}}</span>
+      <b>Subtotal :</b>
+      <span>$ {{totolAmount}}</span>
     </div>
-    <button class="btn btn-success w-100">Buy</button>
+    <button class="btn btn-success w-100" @click="()=>this.$router.push('/address')">Buy</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      amount: 0
-    };
-  },
   computed: {
     carts() {
       return this.$store.getters.getCarts;
-    }
-  },
-  created() {
-    this.calculateTotalAmount();
-  },
-  methods: {
-    calculateTotalAmount() {
+    },
+    totolAmount() {
+      let amount = 0;
       this.carts.forEach(cart => {
-        this.amount += cart.productDetail.product.price + cart.quantity;
+        amount += cart.productDetail.product.price * cart.quantity;
       });
+      return amount   
     }
   }
 };

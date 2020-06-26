@@ -1,13 +1,9 @@
 <template>
   <div>
     <TopBar />
-    <div class="container mt-5 ">
-      <div class="row ">
-        <div class="col-md-3 col-xs-4">
-          <Category />
-        </div>
-        <Products />
-      </div>
+    <div class="container mt-5">
+      <Category />
+      <Products />
     </div>
   </div>
 </template>
@@ -22,8 +18,7 @@ export default {
     TopBar,
     Category,
     Products
-  },
-
+  }
 };
 </script>
 

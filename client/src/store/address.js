@@ -1,45 +1,19 @@
 import Axios from 'axios'
 
-export const basket = {
+export const address = {
     state: {
-        carts: [],
+        address: {},
     },
     getters: {
-        getCarts(state) {
-            return state.carts
+        getAddress(state) {
+            return state.address
         },
     },
     mutations: {
-        initCart(state, cart) {
-            if (state.carts.length === 0) {
-
-                const token = localStorage.getItem('token');
-
-                Axios.get('https://localhost:44360/api/carts', {
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    }
-                })
-                    .then(res => {
-                        let newCarts = [...res.data]
-                        state.carts = newCarts;
-                    })
-            }
-            if (cart) {
-                state.carts.push(cart)
-            }
-        },
-        addCart(state,cart){
-            state.carts.push(cart)
-        },
-        deleteCart(state, id) {
-            let index = state.carts.findIndex(x => x.id == id)
-            if (index > -1) {
-                state.carts.splice(index, 1)
-            }
+        initCart(state, address) {
+            Object.assign(state.address ,address);
         },
     },
-
     actions: {
         addCartToBasket(context, cart) {
 
