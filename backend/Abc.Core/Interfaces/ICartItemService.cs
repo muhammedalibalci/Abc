@@ -9,8 +9,10 @@ namespace Abc.Core.Interfaces
     public interface ICartItemService
     {
 
+        Task<CartItem> Get(string userId);
         Task<IReadOnlyList<CartItem>> GetAll(string userId);
         Task<CartItem> Insert(CartItem cartItem, string userId);
+        Task<CartItem> Update(CartItem cartItem);
         Task<CartItem> Delete(int cartItemId);
 
     }

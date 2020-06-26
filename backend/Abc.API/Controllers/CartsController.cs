@@ -39,9 +39,17 @@ namespace Abc.API.Controllers
 
             var userId = HttpContext.User.Identity.Name;
 
-            var order = await _cartItemService.Insert(cartItem, userId);
+            var cart = await _cartItemService.Insert(cartItem, userId);
 
-            return Ok(order);
+            return Ok(cart);
+        }
+        [HttpPut]
+        public async Task<ActionResult<CartItem>> UpdateCart([FromBody] CartItem cartItem)
+        {
+            var userId = HttpContext.User.Identity.Name;
+            cartItem.UserId = userId;
+            var result = await _cartItemService.Update(cartItem);
+            return Ok(result);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<CartItem>> DeleteCart([FromRoute] int id)

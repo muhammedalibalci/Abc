@@ -8,6 +8,6 @@ namespace Abc.Core.Interfaces
 {
     public interface IOrderService
     {
-        Task<Order> Add(int cardId, string userId, int addressId);
+        Task<Order> Add(string userId, int addressId);
     }
 }

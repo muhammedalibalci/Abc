@@ -59,5 +59,16 @@ namespace Abc.Core.Services
 
         }
 
+        public Task<CartItem> Get(string userId)
+        {
+            return _unitOfWork.Repository<CartItem>().GetSpecByIdAsync(x => x.UserId == userId);
+        }
+
+        public async Task<CartItem> Update(CartItem cartItem)
+        {
+            var result =  await _unitOfWork.Repository<CartItem>().Update(cartItem);
+            await _unitOfWork.Complete();
+            return result;
+        }
     }
 }

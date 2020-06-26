@@ -21,7 +21,7 @@ namespace Abc.Core.Services
             _userManager = userManager;
         }
 
-        public async Task<Order> Add(int cardId,string userId, int addressId)
+        public async Task<Order> Add(string userId, int addressId)
         {
             var spec = new CardItemSpecification(userId);
 
@@ -48,11 +48,11 @@ namespace Abc.Core.Services
 
             foreach (var item in cartItems)
             {
-                var productItem = await _unitOfWork.Repository<ProductDetail>().GetByIdAsync(item.Id);
+                var productItem = await _unitOfWork.Repository<ProductDetail>().GetByIdAsync((int)item.ProductDetail.ProductId);
                 var orderItem = new OrderItem();
                 orderItem.OrderId = newOrder.Id;
                 orderItem.Quantity = item.Quantity;
-                orderItem.ProductDetailId = productItem.Id;
+                orderItem.ProductDetailId = item.ProductDetailId;
                 await _unitOfWork.Repository<OrderItem>().Add(orderItem);
                 items.Add(orderItem);
             }

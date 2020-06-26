@@ -48,7 +48,9 @@ namespace Abc.Core.Services
 
         public async Task<Product> Update(Product post)
         {
-            return await _unitOfWork.Repository<Product>().Update(post);
+            var result =  await _unitOfWork.Repository<Product>().Update(post);
+            await _unitOfWork.Complete();
+            return result;
         }
     }
 }

@@ -28,12 +28,12 @@ namespace Abc.API.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult<Order>> AddOrder([FromBody] OrderDTO orderDTO)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Order>> AddOrder([FromRoute] int id)
         {
 
             var userId = HttpContext.User.Identity.Name;
-            var order = await _orderService.Add(orderDTO.CartId, userId, 1);
+            var order = await _orderService.Add( userId, id);
 
             return Ok(order);
         }
