@@ -1,17 +1,19 @@
 <template>
   <div class="row p-4">
-    <div class="col-xl-4">
-      <img :src="cart.productDetail.product.imageUrl" class alt="..." width="150"/>
-    </div>
-    <div class="col-xl-4 mt-4">
-      <div class>{{cart.productDetail.product.name}}</div>
-      <div class>Color :{{cart.productDetail.color}}</div>
-      <div class>Size : {{cart.productDetail.size}}</div>
-      <div>
-        <button class="btn btn-danger btn-sm mt-3 ml-3" @click="onClickDelete(cart.id)">
+     <div class="col-xl-2">
+        <button class="btn btn-danger btn-sm " @click="onClickDelete(cart.id)">
           <i class="fa fa-trash"></i>
         </button>
       </div>
+    <div class="col-xl-4">
+      
+      <img :src="cart.productDetail.product.imageUrl"  alt="..." width="150"/>
+    </div>
+    <div class="col-xl-2 ">
+      <div class>{{cart.productDetail.product.name}}</div>
+      <div class>Color :{{cart.productDetail.color}}</div>
+      <div class>Size : {{cart.productDetail.size}}</div>
+     
     </div>
     <div class="col-xl-2 mt-5">
       <button class="btn btn-sm btn-secondary mr-1 mb-1" @click="decreaseProduct(cart)">-</button>

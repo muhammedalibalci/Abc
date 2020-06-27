@@ -30,6 +30,11 @@ export default {
   font-family: 'Courier New', Courier, monospace;
   font: 600;
 }
-
+.nav-link{
+  color: white;
+}
+.nav-item :hover(){
+  color: aqua;
+}
 
 </style>

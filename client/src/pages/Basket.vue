@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="basket">
     <TopBar />
-    <div class="container mt-5">
+    <div class="container mt-5 ">
       <div class="row d-flex">
         <div class="col-xl-8 card">
           <div class="">
-            <h4 class="text-center mt-4 mb-4">Products</h4>
+            <h4 class="text-center mt-4 mb-4">Items in Your Bag</h4>
           <hr>
             <BasketItems v-for="(cart,index) in carts" :key="index" :cart="cart" />
             <hr />
@@ -39,4 +39,7 @@ export default {
 </script>
 
 <style>
+.basket{
+  background-color: #f1f1f1;
+}
 </style>

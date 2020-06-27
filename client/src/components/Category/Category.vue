@@ -6,7 +6,7 @@
 
     <div class="category mr-2" v-for="category in categories" :key="category.id">
       <span
-        class="card-inline"
+        class="card-inline pl-2 pr-2"
         :class="{'current-category':currentCategoryId === category.id}"
         @click="switchProducts(category.id)"
       >{{category.name}}</span>
@@ -68,9 +68,11 @@ export default {
   font-family: sans-serif;
   font-weight: 500;
   font-size: 18px;
+
 }
 
 .current-category {
-  background: pink;
+  background: #341456;
+  color: white;
 }
 </style>

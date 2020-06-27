@@ -9,6 +9,11 @@ const routes = [
     component: () => import('../pages/Home.vue')
   },
   {
+    path: '/products',
+    name: 'products',
+    component: () => import('../pages/Products.vue')
+  },
+  {
     path: '/product/:id',
     name: 'productDetail',
     component: () => import('../pages/ProductDetail.vue')
@@ -22,6 +27,11 @@ const routes = [
     path: '/address',
     name: 'address',
     component: () => import('../pages/AddressSection.vue')
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: () => import('../pages/Checkout.vue')
   },
   {
     path: '/order',

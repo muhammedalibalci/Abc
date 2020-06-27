@@ -3,7 +3,7 @@
     <h4>Order Summary</h4>
     <hr />
     <div class="amount mb-4 mt-4">
-      <b>Subtotal :</b>
+      <b>Total :</b>
       <span>$ {{totolAmount}}</span>
     </div>
     <button class="btn btn-success w-100" @click="()=>this.$router.push('/address')">Buy</button>

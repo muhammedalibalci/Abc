@@ -1,15 +1,16 @@
 <template>
   <div class="collapse navbar-collapse float-right mr-5" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <UserTopBar :userName="user.userName" />
-      <li class="nav-item">
+      <li class="nav-link">
+        <router-link to="/" class="account">My Account</router-link>
+      </li>
+      <li class="nav-link ">
+        <span @click="()=>this.$store.dispatch('logout')">Log out</span>
+      </li>
+      <li class="nav-item ml-5">
         <router-link class="nav-link" to="/basket">
-          <div class="shopping-cart">
             <i class="fa fa-shopping-cart"></i>
-          </div>
-          <div class="c-length ml-3 pl-1">
             <span class="w-length">{{cartsLength}}</span>
-          </div>
         </router-link>
       </li>
     </ul>
@@ -17,12 +18,9 @@
 </template>
 
 <script>
-import UserTopBar from "./UserTopBar";
 export default {
   name: "IfLoginRightMenu",
-  components: {
-    UserTopBar
-  },
+
   computed: {
     cartsLength() {
       return this.$store.getters.getCarts.length;
@@ -46,16 +44,17 @@ export default {
   color: white;
   font-size: 1.2rem;
 }
-
-.c-length {
-  background: #ff4747;
-  max-width: 20px;
-  min-width: 20px;
-  height: 20px;
-  color: #fff;
-  border-radius: 10px;
+.nav-link {
+  color: white;
 }
 .w-length {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+}
+.account {
+  color: white;
+  text-decoration: none;
+}
+a:hover() {
+  color: white;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary pl-5">
+  <nav class="navbar navbar-expand-lg  pl-5">
     <router-link to="/" class="navbar-brand">
        E-Commerce
     </router-link>
@@ -39,8 +39,14 @@ export default {
 </script>
 
 <style >
+.navbar{
+  background-color: #341456;
+  
+}
 .navbar-brand {
   font-family: "Courier New", Courier, monospace;
   font-weight: 700;
+  color: white;
+
 }
 </style>
