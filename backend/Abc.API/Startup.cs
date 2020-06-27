@@ -60,6 +60,7 @@ namespace Abc.API
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ICartItemService, CartItemService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
 
         }

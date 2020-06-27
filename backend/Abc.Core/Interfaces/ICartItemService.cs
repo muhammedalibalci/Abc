@@ -14,6 +14,7 @@ namespace Abc.Core.Interfaces
         Task<CartItem> Insert(CartItem cartItem, string userId);
         Task<CartItem> Update(CartItem cartItem);
         Task<CartItem> Delete(int cartItemId);
+        Task<CartItem> Delete(CartItem cartItem);
 
     }
 }

@@ -9,9 +9,9 @@ namespace Abc.Core.Specifications
     {
         public CardItemSpecification(string id)
         {
+            AddWhere(x => x.UserId == id);
             AddInclude(x => x.ProductDetail);
             AddInclude(x => x.ProductDetail.Product);
-            AddWhere(x => x.UserId == id);
         }
     }
 }

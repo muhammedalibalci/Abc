@@ -13,11 +13,9 @@ namespace Abc.Core.Services
     public class CartItemService : ICartItemService
     {
         private IUnitOfWork _unitOfWork;
-        private UserManager<User> _userManager;
-        public CartItemService(IUnitOfWork unitOfWork, UserManager<User> userManager)
+        public CartItemService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _userManager = userManager;
         }
 
 
@@ -58,7 +56,13 @@ namespace Abc.Core.Services
             return cartItem;
 
         }
+        public async Task<CartItem> Delete(CartItem cartItem)
+        {
+            await _unitOfWork.Repository<CartItem>().Delete(cartItem);
 
+            return cartItem;
+
+        }
         public Task<CartItem> Get(string userId)
         {
             return _unitOfWork.Repository<CartItem>().GetSpecByIdAsync(x => x.UserId == userId);
