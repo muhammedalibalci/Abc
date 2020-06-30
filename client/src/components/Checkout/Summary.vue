@@ -43,6 +43,12 @@ export default {
     currentAddress: Object,
     onClickRadio: Boolean
   },
+  created() {
+    const token = localStorage.getItem('token')
+    if (this.carts.length === 0 && token) {
+      this.$router.push("/products");
+    }
+  },
   computed: {
     carts() {
       return this.$store.getters.getCarts;

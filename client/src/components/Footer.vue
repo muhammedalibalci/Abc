@@ -1,24 +1,20 @@
 <template>
-  <div class="footer ">
-      <div class="text-center text pt-2" >
-          Hello World
-      </div>
-  </div>
+  <footer class="footer">
+    <div class="text-center text pt-2">Hello World</div>
+  </footer>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-.footer{
-    background: #341456;
-   height: 100%;
-   margin: 0 auto -60px;
-}
-.text{
-    color: white;
+footer {
+  background: #341456;
+  color: #fff;
+  position: relative;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
 }
 </style>

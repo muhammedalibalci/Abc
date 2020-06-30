@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getCategories() {
-      Axios.get("https://localhost:44360/api/categories")
+      Axios.get("https://abc-app-api.azurewebsites.net/api/categories")
         .then(res => {
           let categories = [...res.data];
           this.categories = categories;

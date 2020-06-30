@@ -27,7 +27,7 @@ export default {
     NormalRightMenu,
     IfLoginRightMenu
   },
-  mounted(){
+  created(){
     this.$store.commit('initCart')
   },
   computed: {

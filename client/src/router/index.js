@@ -24,6 +24,11 @@ const routes = [
     component: () => import('../pages/Cart.vue')
   },
   {
+    path: '/orders',
+    name: 'orders',
+    component: () => import('../pages/Orders.vue')
+  },
+  {
     path: '/add-address',
     name: 'addaddress',
     component: () => import('../pages/AddAddress.vue')
@@ -34,9 +39,9 @@ const routes = [
     component: () => import('../pages/Checkout.vue')
   },
   {
-    path: '/order',
-    name: 'order',
-    component: () => import('../pages/Order.vue')
+    path: '/my-account',
+    name: 'account',
+    component: () => import('../pages/Account.vue')
   },
   {
     path: '/login',
@@ -47,6 +52,10 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import('../pages/Register.vue')
+  },
+  {
+    path: '*',
+    component: () => import('../pages/NotFound.vue')
   },
 ]
 

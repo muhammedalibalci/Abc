@@ -60,6 +60,11 @@ export default {
   components: {
     TopBar
   },
+  mounted() {
+    if (this.carts.length === 0) {
+      this.$router.push('/products')
+    }
+  },
   computed: {
     carts() {
       return this.$store.getters.getCarts;

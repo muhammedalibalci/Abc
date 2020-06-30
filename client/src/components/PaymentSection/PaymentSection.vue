@@ -82,7 +82,7 @@ export default {
   methods: {
     payment() {
       const id = localStorage.getItem("Id");
-      Axios.post("https://localhost:44360/api/payments/" + id)
+      Axios.post("https://abc-app-api.azurewebsites.net/api/payments/" + id)
         .then(res => {
           this.$router.push("/products");
           this.onClickPay = false;

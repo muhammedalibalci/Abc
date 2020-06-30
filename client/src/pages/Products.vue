@@ -1,7 +1,7 @@
 <template>
   <div>
     <TopBar />
-    <div class="p-wrap pt-5">
+    <div class="p-wrap pt-3">
       <Category />
       <ProductsSection />
     </div>

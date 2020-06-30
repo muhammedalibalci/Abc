@@ -26,7 +26,7 @@ export const product = {
     actions: {
         fetchProducts(context, id = 1) {
             context.commit('initCategoryId', id)
-            Axios.get(`https://localhost:44360/api/products/${id}/category`)
+            Axios.get(`https://abc-app-api.azurewebsites.net/api/products/${id}/category`)
                 .then(res => {
                     context.commit('initProducts', res.data)
                 }).catch(err => {

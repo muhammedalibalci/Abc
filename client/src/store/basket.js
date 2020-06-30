@@ -15,7 +15,7 @@ export const basket = {
 
                 const token = localStorage.getItem('token');
 
-                Axios.get('https://localhost:44360/api/carts', {
+                Axios.get('https://abc-app-api.azurewebsites.net/api/carts', {
                     headers: {
                         'Authorization': 'Bearer ' + token
                     }
@@ -48,7 +48,7 @@ export const basket = {
 
             const token = localStorage.getItem('token');
 
-            Axios.post('https://localhost:44360/api/carts',
+            Axios.post('https://abc-app-api.azurewebsites.net/api/carts',
                 cart,
                 {
                     headers: {
@@ -66,7 +66,7 @@ export const basket = {
 
             const token = localStorage.getItem('token');
 
-            Axios.delete('https://localhost:44360/api/carts/' + id,
+            Axios.delete('https://abc-app-api.azurewebsites.net/api/carts/' + id,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export const basket = {
         updateCart(context, cart) {
             const token = localStorage.getItem('token');
 
-            Axios.put('https://localhost:44360/api/carts',
+            Axios.put('https://abc-app-api.azurewebsites.net/api/carts',
                 cart,
                 {
                     headers: {

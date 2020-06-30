@@ -17,7 +17,7 @@ export const auth = {
         initUser(state, user) {
             if(localStorage.getItem('token')) {
                 const id = localStorage.getItem('Id');
-                Axios.get("https://localhost:44360/api/users/"+id)
+                Axios.get("https://abc-app-api.azurewebsites.net/api/users/"+id)
                 .then(res=>{
                     state.user = res.data
                 })
@@ -35,7 +35,7 @@ export const auth = {
     actions: {
         login(context, auth) {
             return new Promise((resolve, reject) => {
-                Axios.post(`https://localhost:44360/api/auth/login`, auth)
+                Axios.post(`https://abc-app-api.azurewebsites.net/api/auth/login`, auth)
                     .then((res) => {
                         context.commit('initUser', res.data)
                         localStorage.setItem('token',res.data.token)
@@ -53,7 +53,7 @@ export const auth = {
         },
         register(context, user) {
             return new Promise((resolve, reject) => {
-                Axios.post(`https://localhost:44360/api/auth/register`, user)
+                Axios.post(`https://abc-app-api.azurewebsites.net/api/auth/register`, user)
                     .then((res) => {
                         context.commit('initUser', res.data)
                         localStorage.setItem('token',res.data.token)

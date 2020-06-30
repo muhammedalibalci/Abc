@@ -85,7 +85,7 @@ export default {
       this.pendingApiCall = true
       const id = localStorage.getItem("Id");
 
-      Axios.post("https://localhost:44360/api/payments/" + id)
+      Axios.post("https://abc-app-api.azurewebsites.net/api/payments/" + id)
         .then(res => {
           console.log(res);
 
@@ -95,7 +95,7 @@ export default {
             UserId: id,
             AddressId: this.currentAddress.id
           };
-          Axios.post("https://localhost:44360/api/orders", order).then(() => {
+          Axios.post("https://abc-app-api.azurewebsites.net/api/orders", order).then(() => {
             this.pendingApiCall = false
             this.onClickPay = false;
             this.$router.push("/products");

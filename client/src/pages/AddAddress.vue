@@ -2,10 +2,13 @@
   <div class="add-address">
     <TopBar />
     <div class="container">
-      <h4>Add Address</h4>
-      <button class="btn btn-back" @click="()=>this.$router.push('checkout')">Back</button>
+      <h4 class="mt-3">Add Address</h4>
+      <button class="btn btn-back" @click="()=>this.$router.go(-1)">Back</button>
     </div>
-    <div class="alert alert-success w-50 text-center mx-auto" v-show="messageVisible">Added Address Successfully</div>
+    <div
+      class="alert alert-success w-50 text-center mx-auto"
+      v-show="messageVisible"
+    >Added Address Successfully</div>
     <div class="w-25 card shadow pt-3 pl-3 pr-3 mx-auto">
       <div class="form-group">
         <label>Full Name</label>
@@ -40,6 +43,7 @@
 
 <script>
 import Axios from "axios";
+import jwttoken from "jwt-decode";
 import TopBar from "../components/TopBar/TopBar";
 export default {
   data() {
@@ -51,6 +55,18 @@ export default {
   components: {
     TopBar
   },
+  created() {
+      const token = localStorage.getItem("token");
+    let decode;
+    console.log(token);
+
+    if (token !== null) {
+      decode = jwttoken(token);
+    }
+    if (token == null || !decode.email) {
+      this.$router.push("/products");
+    }
+  },
   methods: {
     onChangeInput(e) {
       const { name, value } = e.target;
@@ -59,7 +75,7 @@ export default {
     onClickAddButton() {
       const token = localStorage.getItem("token");
 
-      Axios.post("https://localhost:44360/api/users/address", this.newAddress, {
+      Axios.post("https://abc-app-api.azurewebsites.net/api/users/address", this.newAddress, {
         headers: { Authorization: "Bearer " + token }
       })
         .then((this.messageVisible = true))
@@ -82,7 +98,8 @@ export default {
   background-color: #341456;
   color: white;
 }
-.add-address{
-    background-color: #f1f1f1;
+.add-address {
+  background-color: #f1f1f1;
+  height: 100vh;
 }
 </style>

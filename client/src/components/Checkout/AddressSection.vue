@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="address in addresses" :key="address.id">
+          <tr v-for="address in addresses.filter(x=>x.isDeleted !== true)" :key="address.id">
             <th>
               <input
                 type="radio"
@@ -52,12 +52,13 @@ export default {
   components: {
     PaymentModal
   },
+  
   data() {
     return {
       addresses: [],
       isFound: false,
       paymentSection: false,
-      onClickPay:false
+      onClickPay: false
     };
   },
   props: {
@@ -72,7 +73,7 @@ export default {
     fetchAddresses() {
       const token = localStorage.getItem("token");
 
-      Axios.get("https://localhost:44360/api/users/address", {
+      Axios.get("https://abc-app-api.azurewebsites.net/api/users/address", {
         headers: {
           Authorization: "Bearer " + token
         }
@@ -85,8 +86,7 @@ export default {
     onClickRadioAddress(address) {
       this.onClickAddress(address);
     },
-    payment() {
-    }
+    payment() {}
   }
 };
 </script>

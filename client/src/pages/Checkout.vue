@@ -10,12 +10,12 @@
       />
       <Summary :currentAddress="currentAddress" :onClickRadio="onClickRadio" />
     </div>
-
   </div>
 </template>
 
 <script>
 import Topbar from "../components/TopBar/TopBar";
+import jwttoken from "jwt-decode";
 import AddressSection from "../components/Checkout/AddressSection";
 import Summary from "../components/Checkout/Summary";
 export default {
@@ -26,10 +26,21 @@ export default {
       onClickRadio: false
     };
   },
+  created() {
+    const token = localStorage.getItem("token");
+    let decode;
+
+    if (token !== null) {
+      decode = jwttoken(token);
+    }
+    if (token == null || !decode.email) {
+      this.$router.push("/products");
+    }
+  },
   components: {
     Topbar,
     AddressSection,
-    Summary,
+    Summary
   },
   methods: {
     onClickAddress(address) {

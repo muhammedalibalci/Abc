@@ -2,15 +2,17 @@
   <div class="collapse navbar-collapse float-right mr-5" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-link">
-        <router-link to="/" class="account">My Account</router-link>
+        <router-link to="/my-account" class="account">
+          <span>My Account</span>
+        </router-link>
       </li>
-      <li class="nav-link ">
-        <span @click="()=>this.$store.dispatch('logout')">Log out</span>
+      <li class="nav-link">
+        <span @click="logout">Log out</span>
       </li>
       <li class="nav-item ml-5">
         <router-link class="nav-link" to="/cart">
-            <i class="fa fa-shopping-cart"></i>
-            <span class="w-length">{{cartsLength}}</span>
+          <i class="fa fa-shopping-cart"></i>
+          <span class="w-length ml-2">{{cartsLength}}</span>
         </router-link>
       </li>
     </ul>
@@ -28,6 +30,12 @@ export default {
   },
   props: {
     user: Object
+  },
+  methods: {
+    logout() {
+      location.reload();
+      this.$store.dispatch("logout");
+    }
   }
 };
 </script>
