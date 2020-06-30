@@ -49,8 +49,7 @@ namespace Abc.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
                 });
@@ -164,6 +163,9 @@ namespace Abc.API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -206,9 +208,6 @@ namespace Abc.API.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("AddressId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -264,8 +263,8 @@ namespace Abc.API.Migrations
             modelBuilder.Entity("Abc.Core.Entities.Address", b =>
                 {
                     b.HasOne("Abc.Core.Entities.User", "User")
-                        .WithOne("Address")
-                        .HasForeignKey("Abc.Core.Entities.Address", "UserId");
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Abc.Core.Entities.CartItem", b =>

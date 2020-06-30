@@ -27,6 +27,7 @@ namespace Abc.Core.Services
 
             var cartItems = await _unitOfWork.Repository<CartItem>().ListAsync(spec);
 
+
             var user = await _userManager.FindByIdAsync(userId);
 
 
@@ -36,7 +37,7 @@ namespace Abc.Core.Services
             Order order = new Order
             {
                 UserId = user.Id,
-                AddressId = user.AddressId,
+                AddressId = addressId,
                 User = user,
                 Amount = 1,
                 Status = "InProgress"
@@ -56,6 +57,12 @@ namespace Abc.Core.Services
                 await _unitOfWork.Repository<OrderItem>().Add(orderItem);
                 items.Add(orderItem);
             }
+
+            foreach (var item in cartItems)
+            {
+                await _unitOfWork.Repository<CartItem>().Delete(item);
+            }
+            _unitOfWork.Dispose();
 
             return order;
         }

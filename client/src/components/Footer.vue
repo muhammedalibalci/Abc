@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer ">
       <div class="text-center text pt-2" >
           Hello World
       </div>
@@ -14,9 +14,9 @@ export default {
 
 <style>
 .footer{
-    height: 50px;
-    width: 100%;
-    background-color: #341456;
+    background: #341456;
+   height: 100%;
+   margin: 0 auto -60px;
 }
 .text{
     color: white;

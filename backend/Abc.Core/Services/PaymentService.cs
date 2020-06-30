@@ -50,11 +50,7 @@ namespace Abc.Core.Services
             };
             await service.CreateAsync(options);
 
-            foreach (var item in carts)
-            {
-                await _unitOfWork.Repository<CartItem>().Delete(item);
-            }
-             _unitOfWork.Dispose();
+           
             return true;
         }
 

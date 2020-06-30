@@ -8,7 +8,7 @@
         <span @click="()=>this.$store.dispatch('logout')">Log out</span>
       </li>
       <li class="nav-item ml-5">
-        <router-link class="nav-link" to="/basket">
+        <router-link class="nav-link" to="/cart">
             <i class="fa fa-shopping-cart"></i>
             <span class="w-length">{{cartsLength}}</span>
         </router-link>

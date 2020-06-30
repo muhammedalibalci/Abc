@@ -17,14 +17,12 @@ namespace Abc.API.Controllers
             _paymentService = paymentService;
         }
 
-        [HttpPost]
-        public string Demo()
+        [HttpPost("{id}")]
+        public async Task<string> Payment([FromRoute] string id)
         {
-            var userId = HttpContext.User.Identity.Name;
+           await _paymentService.CreateOrUpdatePaymentIntent(id);
 
-            _paymentService.CreateOrUpdatePaymentIntent(userId);
-
-            return "Demo";
+            return "Payment Successfully";
         }
 
 

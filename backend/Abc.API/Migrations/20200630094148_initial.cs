@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Abc.API.Migrations
 {
-    public partial class initial1 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,8 +41,7 @@ namespace Abc.API.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    AddressId = table.Column<int>(nullable: true)
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,6 +57,7 @@ namespace Abc.API.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<int>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -203,8 +203,7 @@ namespace Abc.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserId",
                 table: "Addresses",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CardItems_ProductDetailId",

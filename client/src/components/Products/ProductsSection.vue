@@ -1,36 +1,41 @@
 <template>
-  <div class="products">
-    <div class="text-center">
-      <PendingApiCall v-show="pendingApiCall" />
-    </div>
-    <section
-      class="card ml-4 mb-2 p-2 card-product shadow"
-      v-for="product in products"
-      :key="product.id"
-    >
-      <div class="p-3">
-        <img :src="product.imageUrl"  alt="..." height="200" width="100%" />
+  <div>
+    <div class="products">
+      <div class="text-center">
+        <PendingApiCall v-show="pendingApiCall" />
       </div>
-      <hr />
-      <div class="card-body text-center">
-        <h5 class="card-title">{{product.name}}</h5>
+      <section
+        class="card ml-4 mb-2 p-2 card-product shadow"
+        v-for="product in products"
+        :key="product.id"
+      >
+        <div class="p-3">
+          <img :src="product.imageUrl" alt="..." height="200" width="100%" />
+        </div>
+        <hr />
+        <div class="card-body text-center">
+          <h5 class="card-title">{{product.name}}</h5>
 
-        <div class="card-title">$ {{product.price}}</div>
-        <button
-          class="btn p-button w-100"
-          @click="addToBasket(product.productDetails)"
-        >Add To Basket</button>
-      </div>
-    </section>
+          <div class="card-title">$ {{product.price}}</div>
+          <button
+            class="btn p-button w-100"
+            @click="addToBasket(product.productDetails)"
+          >Add To Basket</button>
+        </div>
+      </section>
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import PendingApiCall from "../PendingApiCall";
+import Footer from "../Footer";
 export default {
   name: "Products",
   components: {
-    PendingApiCall
+    PendingApiCall,
+    Footer
   },
   data: function() {
     return {
@@ -48,6 +53,8 @@ export default {
   },
   methods: {
     addToBasket(productDetails) {
+      console.log(productDetails);
+      
       const cart = {
         Quantity: 1,
         ProductDetailId: productDetails[0].id
@@ -68,9 +75,6 @@ export default {
   width: 300px;
   font-family: monospace;
   border-radius: 5px;
-}
-.card-product:hover {
-  width: 320px;
 }
 .p-button {
   background-color: #341456;

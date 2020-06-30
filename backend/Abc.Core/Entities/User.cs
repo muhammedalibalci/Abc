@@ -11,8 +11,7 @@ namespace Abc.Core.Entities
         public string Name { get; set; }
         public string LastName { get; set; }
 
-        public int? AddressId { get; set; }
-        public Address Address { get; set; }
+        public List<Address> Addresses { get; set; }
         public List<Order> Orders { get; set; }
        
         public List<CartItem> CartItems { get; set; }

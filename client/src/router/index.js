@@ -19,14 +19,14 @@ const routes = [
     component: () => import('../pages/ProductDetail.vue')
   },
   {
-    path: '/basket',
-    name: 'basket',
-    component: () => import('../pages/Basket.vue')
+    path: '/cart',
+    name: 'cart',
+    component: () => import('../pages/Cart.vue')
   },
   {
-    path: '/address',
-    name: 'address',
-    component: () => import('../pages/AddressSection.vue')
+    path: '/add-address',
+    name: 'addaddress',
+    component: () => import('../pages/AddAddress.vue')
   },
   {
     path: '/checkout',

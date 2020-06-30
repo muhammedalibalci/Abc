@@ -29,7 +29,10 @@ export const basket = {
                 state.carts.push(cart)
             }
         },
-        addCart(state,cart){
+        emptyCart(state) {
+            state.carts = []
+        },
+        addCart(state, cart) {
             state.carts.push(cart)
         },
         deleteCart(state, id) {
@@ -77,22 +80,22 @@ export const basket = {
                     console.log(err);
                 })
         },
-        updateCart(context,cart){
+        updateCart(context, cart) {
             const token = localStorage.getItem('token');
 
             Axios.put('https://localhost:44360/api/carts',
-            cart,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
-                }
-            })
-            .then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.log(err);
-            })
+                cart,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    }
+                })
+                .then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
         }
     },
 }

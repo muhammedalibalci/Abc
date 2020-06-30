@@ -8,7 +8,7 @@ namespace Abc.API.DTO
 {
     public class OrderDTO
     {
-        public int CartId { get; set; }
-        public Address Address { get; set; }
+        public string UserId { get; set; }
+        public int AddressId { get; set; }
     }
 }

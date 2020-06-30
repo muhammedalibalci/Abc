@@ -11,6 +11,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Abc.API.Controllers
 {
@@ -44,16 +45,9 @@ namespace Abc.API.Controllers
         {
             var userId = HttpContext.User.Identity.Name;
             
+            address.UserId = userId;
 
-            var result = await _unitOfWork.Repository<Address>().Add(address);
-
-            User user = await _userManager.FindByIdAsync(userId);
-
-            user.AddressId = result.Id;
-
-            result.UserId = userId;
-
-            await _userManager.UpdateAsync(user);
+            await _unitOfWork.Repository<Address>().Add(address);
 
             return true;
         }
@@ -68,25 +62,30 @@ namespace Abc.API.Controllers
             return true;
         }
         [HttpGet("address")]
-        public async Task<ActionResult<Address>> GetAddress()
+        public async Task<ActionResult<IReadOnlyList<Address>>> GetAddress()
         {
             var userId = HttpContext.User.Identity.Name;
 
-            User user = _userManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+            User user = _userManager.Users
+                .Include(x=>x.Addresses)
+                .Where(x => x.Id == userId)
+                .FirstOrDefault();
 
-            if (user.AddressId == null)
+            if (user.Addresses.Count == 0)
             {
                 return NotFound(new APIResponse(404, "User hasn't the address"));
             }
 
-            var address = await _unitOfWork.Repository<Address>().GetSpecByIdAsync(x => x.UserId == userId);
+            AddressSpecification spec = new AddressSpecification(userId);
 
-            if (address == null)
+            var addresses = await _unitOfWork.Repository<Address>().ListAsync(spec);
+
+            if (addresses == null)
             {
                 return NotFound(new APIResponse(404, "User hasn't the address"));
             }
 
-            return address;
+            return Ok(addresses);
         }
     }
 }
