@@ -13,6 +13,7 @@ namespace Abc.Core.Entities
         public string PostCode { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
+        public Boolean IsDeleted { get; set; }
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }

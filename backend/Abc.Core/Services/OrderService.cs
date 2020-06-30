@@ -21,6 +21,20 @@ namespace Abc.Core.Services
             _userManager = userManager;
         }
 
+
+        public async Task<IReadOnlyList<OrderItem>> GetAll(string userId)
+        {
+            var spec = new OrderItemSpecification(userId);
+
+            var orders = await _unitOfWork.Repository<OrderItem>().ListAsync(spec);
+
+            return orders;
+
+        }
+
+
+
+
         public async Task<Order> Add(string userId, int addressId)
         {
             var spec = new CardItemSpecification(userId);
@@ -37,6 +51,7 @@ namespace Abc.Core.Services
             Order order = new Order
             {
                 UserId = user.Id,
+                CreatedDate = DateTime.Now,
                 AddressId = addressId,
                 User = user,
                 Amount = 1,

@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Abc.Core.Entities
 {
-    [Table("Product")]
     public class Product : BaseEntity
     {
         public string Name { get; set; }

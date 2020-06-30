@@ -62,6 +62,7 @@ namespace Abc.Infrastructure
         {
             _context.Set<T>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
             return entity;
         }
 
@@ -72,6 +73,6 @@ namespace Abc.Infrastructure
             return entity;
         }
 
-      
+       
     }
 }

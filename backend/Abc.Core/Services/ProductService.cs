@@ -18,7 +18,10 @@ namespace Abc.Core.Services
       
         public async Task<Product> Get(int id)
         {
-            return await _unitOfWork.Repository<Product>().GetByIdAsync(id);
+            ProductSpecification spec = new ProductSpecification();
+
+            return await _unitOfWork.Repository<Product>().GetEntityWithSpec(spec);
+
         }
 
         public async Task<IReadOnlyList<Product>> GetAll(int id)

@@ -31,7 +31,8 @@ namespace Abc.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDto>> GetUser([FromRoute] string id)
         {
-            var user = await _userManager.FindByIdAsync(id);
+            var user = await _userManager.Users.Include(x => x.Addresses)
+                .SingleOrDefaultAsync(x => x.Id == id);
 
             var userDto = _mapper.Map<UserDto>(user);
 
@@ -44,10 +45,20 @@ namespace Abc.API.Controllers
         public async Task<ActionResult<bool>> AddAddress([FromBody] Address address)
         {
             var userId = HttpContext.User.Identity.Name;
-            
+
             address.UserId = userId;
+            address.IsDeleted = false;
 
             await _unitOfWork.Repository<Address>().Add(address);
+
+            return true;
+        }
+        [HttpDelete("{id}/address")]
+        public async Task<ActionResult<bool>> DeleteAddress([FromRoute] int id)
+        {
+            var address = await _unitOfWork.Repository<Address>().GetByIdAsync(id);
+            address.IsDeleted = true;
+            await _unitOfWork.Repository<Address>().Update(address);
 
             return true;
         }
@@ -67,7 +78,7 @@ namespace Abc.API.Controllers
             var userId = HttpContext.User.Identity.Name;
 
             User user = _userManager.Users
-                .Include(x=>x.Addresses)
+                .Include(x => x.Addresses)
                 .Where(x => x.Id == userId)
                 .FirstOrDefault();
 

@@ -9,6 +9,7 @@ namespace Abc.Core.Specifications
     {
         public AddressSpecification(string id)
         {
+       
             AddWhere(x => x.UserId == id);
         }
     }

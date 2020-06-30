@@ -17,5 +17,9 @@ namespace Abc.Core.Specifications
 
            
         }
+        public ProductSpecification()
+        {
+            AddInclude(x => x.ProductDetails);
+        }
     }
 }

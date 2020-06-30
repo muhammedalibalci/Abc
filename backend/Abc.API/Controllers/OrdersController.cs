@@ -28,6 +28,17 @@ namespace Abc.API.Controllers
         }
 
 
+
+        [HttpGet] 
+        public async Task<ActionResult<IReadOnlyList<OrderItem>>> GetAll()
+        {
+            var userId = HttpContext.User.Identity.Name;
+
+            return Ok(await _orderService.GetAll(userId));
+        }
+
+
+
         [HttpPost]
         public async Task<ActionResult<Order>> AddOrder([FromBody] OrderDTO orderDTO)
         {
