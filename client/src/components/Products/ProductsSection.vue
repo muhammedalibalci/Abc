@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="pb-5">
     <div class="products w-100 container mt-5">
-      <div class="text-center">
-        <PendingApiCall v-show="pendingApiCall" />
+      <div class="text-center" v-show="pendingApiCall">
+        <PendingApiCall />
       </div>
       <section
         class="card ml-5 mb-4 p-2 card-product shadow mx-auto"
@@ -28,18 +28,15 @@
         </div>
       </section>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import PendingApiCall from "../PendingApiCall";
-import Footer from "../Footer";
 export default {
   name: "Products",
   components: {
-    PendingApiCall,
-    Footer
+    PendingApiCall
   },
   data: function() {
     return {

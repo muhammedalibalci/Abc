@@ -34,12 +34,9 @@ namespace Abc.API
 
             services.AddIdentityServices(Configuration);
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.AllowAnyOrigin());
-            });
-
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                                   .AllowAnyMethod()
+                                                                    .AllowAnyHeader()));
 
             services.AddDbContext<EfDbContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), options =>
@@ -79,10 +76,7 @@ namespace Abc.API
             app.UseRouting();
 
 
-            app.UseCors(options =>
-            {
-                options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-            });
+             app.UseCors("AllowAll");
 
             app.UseAuthorization();
 

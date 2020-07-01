@@ -9,25 +9,25 @@ export const auth = {
         getErrors(state) {
             return state.errors
         },
-        getUser(state){
+        getUser(state) {
             return state.user
         }
     },
     mutations: {
         initUser(state, user) {
-            if(localStorage.getItem('token')) {
+            if (localStorage.getItem('token')) {
                 const id = localStorage.getItem('Id');
-                Axios.get("https://abc-app-api.azurewebsites.net/api/users/"+id)
-                .then(res=>{
-                    state.user = res.data
-                })
+                Axios.get("https://abc-app-api.azurewebsites.net/api/users/" + id)
+                    .then(res => {
+                        state.user = res.data
+                    })
             }
             state.user = user
         },
         initErrors(state, errors) {
             state.errors = errors
         },
-        initLogout(state){
+        initLogout(state) {
             state.user = ""
         }
     },
@@ -38,11 +38,11 @@ export const auth = {
                 Axios.post(`https://abc-app-api.azurewebsites.net/api/auth/login`, auth)
                     .then((res) => {
                         context.commit('initUser', res.data)
-                        localStorage.setItem('token',res.data.token)
-                        localStorage.setItem('Id',res.data.id)
+                        localStorage.setItem('token', res.data.token)
+                        localStorage.setItem('Id', res.data.id)
                         resolve(true);
                     }).catch(err => {
-                        context.commit('initErrors', err.response)
+                        context.commit('initErrors', err.response.data)
                         reject(false);
                     })
             })
@@ -52,15 +52,17 @@ export const auth = {
             context.commit('initLogout');
         },
         register(context, user) {
+            console.log(user);
+
             return new Promise((resolve, reject) => {
                 Axios.post(`https://abc-app-api.azurewebsites.net/api/auth/register`, user)
                     .then((res) => {
                         context.commit('initUser', res.data)
-                        localStorage.setItem('token',res.data.token)
-                        localStorage.setItem('userName',res.data.userName)
+                        localStorage.setItem('token', res.data.token)
+                        localStorage.setItem('Id', res.data.id)
                         resolve(true);
                     }).catch(err => {
-                        context.commit('initErrors', err.response)
+                        context.commit('initErrors', err.response.data.errors)
                         reject(false);
                     })
             })

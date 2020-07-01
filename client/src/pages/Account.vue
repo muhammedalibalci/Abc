@@ -15,10 +15,14 @@
           <i class="fa fa-shopping-basket"></i> My Shopping
         </button>
       </div>
+
       <div class="mt-4">
         <h5>My Address</h5>
+        
         <table class="table">
+        
           <thead class="head">
+            
             <tr>
               <th class="pl-5 pr-5 thead-f">Address</th>
               <th class="pl-5 pr-5 thead-f">Post Code</th>
@@ -27,6 +31,7 @@
               <th class="pl-5 pr-5 thead-f">Delete</th>
             </tr>
           </thead>
+            
           <tbody>
             <tr v-for="address in addresses" :key="address.id">
               <th class="pl-5 pr-5 thead-f">{{address.address1}}</th>
@@ -39,6 +44,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="text-center" v-show="pendingApiCall">
+          <PendingApiCall />
+        </div>
       </div>
     </div>
   </div>
@@ -48,14 +56,17 @@
 import Axios from "axios";
 import jwttoken from "jwt-decode";
 import TopBar from "../components/TopBar/TopBar";
+import PendingApiCall from "../components/PendingApiCall";
 export default {
   components: {
-    TopBar
+    TopBar,
+    PendingApiCall
   },
   data() {
     return {
       user: {},
-      addresses: []
+      addresses: [],
+      pendingApiCall:true
     };
   },
   created() {
@@ -75,18 +86,25 @@ export default {
   methods: {
     fetchUser() {
       const Id = localStorage.getItem("Id");
-      Axios.get("https://abc-app-api.azurewebsites.net/api/users/" + Id).then(res => {
-        this.user = res.data;
-        this.addresses = res.data.addresses.filter(x => x.isDeleted !== true);
-      });
+      Axios.get("https://abc-app-api.azurewebsites.net/api/users/" + Id).then(
+        res => {
+          this.user = res.data;
+          console.log(res);
+          
+          this.addresses = res.data.addresses.filter(x => x.isDeleted !== true);
+          this.pendingApiCall = false
+        }
+      ).catch(
+        this.pendingApiCall = false
+      )
     },
     deleteAddress(id) {
-      Axios.delete(`https://abc-app-api.azurewebsites.net/api/users/${id}/address`).then(
-        res => {
-          console.log(res);
-          this.fetchUser();
-        }
-      );
+      Axios.delete(
+        `https://abc-app-api.azurewebsites.net/api/users/${id}/address`
+      ).then(res => {
+        console.log(res);
+        this.fetchUser();
+      });
     }
   }
 };

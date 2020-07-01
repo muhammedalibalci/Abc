@@ -28,6 +28,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="text-center" v-show="pendingApiCall ">
+        <PendingApiCall />
+      </div>
       <div v-show="isFound" class="alert alert-danger text-center">
         <span>Not Found</span>
       </div>
@@ -47,18 +50,21 @@
 <script>
 import Axios from "axios";
 import PaymentModal from "../Checkout/PaymentModal";
+import PendingApiCall from "../PendingApiCall";
 export default {
   name: "AddressSection",
   components: {
-    PaymentModal
+    PaymentModal,
+    PendingApiCall
   },
-  
+
   data() {
     return {
       addresses: [],
       isFound: false,
       paymentSection: false,
-      onClickPay: false
+      onClickPay: false,
+      pendingApiCall: true
     };
   },
   props: {
@@ -80,8 +86,12 @@ export default {
       })
         .then(res => {
           this.addresses = res.data;
+          this.pendingApiCall = false;
         })
-        .catch((this.isFound = false));
+        .catch(() => {
+          this.isFound = true;
+          this.pendingApiCall = false;
+        });
     },
     onClickRadioAddress(address) {
       this.onClickAddress(address);

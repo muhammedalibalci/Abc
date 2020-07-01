@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "LCDdnvOlOy2fWCQsb609nOjqPJZhoT8QvLguZBB6OWQIlw0z7c+OvRvOTMxhH5s/99ovt+Aq8GMdUxMOCkD2aA==",
+  "dgSpecHash": "DoHoMLkAo9v07KsWISItGaKpHtqUWFy6jFB7rtub7sBOBwjEKEBfkz4g2eooKY1zDS+kUNKkBmE1yB0KcBLvcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\balci\\Desktop\\Abc\\backend\\Abc.API\\Abc.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\balci\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\balci\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

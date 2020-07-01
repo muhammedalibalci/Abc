@@ -86,8 +86,7 @@ export default {
       const id = localStorage.getItem("Id");
 
       Axios.post("https://abc-app-api.azurewebsites.net/api/payments/" + id)
-        .then(res => {
-          console.log(res);
+        .then(() => {
 
           this.onClickPay = false;
 
@@ -98,7 +97,7 @@ export default {
           Axios.post("https://abc-app-api.azurewebsites.net/api/orders", order).then(() => {
             this.pendingApiCall = false
             this.onClickPay = false;
-            this.$router.push("/products");
+            this.$router.push("/orders");
             this.$store.commit('emptyCart');
           });
         })

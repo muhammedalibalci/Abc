@@ -185,8 +185,6 @@ C:\Users\balci\Desktop\Abc\backend\Abc.API\bin\Debug\netcoreapp3.1\Abc.Core.pdb
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.csprojAssemblyReference.cache
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.AssemblyInfoInputs.cache
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.AssemblyInfo.cs
-C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.csproj.CoreCompileInputs.cache
-C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.RazorTargetAssemblyInfo.cache
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.csproj.CopyComplete
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\staticwebassets\Abc.API.StaticWebAssets.Manifest.cache
@@ -194,3 +192,6 @@ C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\staticwebasse
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.dll
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.pdb
 C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.genruntimeconfig.cache
+C:\Users\balci\Desktop\Abc\backend\Abc.API\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.csproj.CoreCompileInputs.cache
+C:\Users\balci\Desktop\Abc\backend\Abc.API\obj\Debug\netcoreapp3.1\Abc.API.MvcApplicationPartsAssemblyInfo.cache

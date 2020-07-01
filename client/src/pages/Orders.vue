@@ -5,6 +5,10 @@
       <h4 class="mt-3 pb-2">My Orders</h4>
       <button class="btn btn-back" @click="()=>this.$router.go(-1)">Back</button>
     </div>
+    <div class="text-center" v-show="pendingApiCall">
+      <PendingApiCall />
+    </div>
+    <h4 class="text-center mt-4" v-if="orders.length === 0 && !pendingApiCall">Not Found Anything :(</h4>
     <div class="card order shadow mt-2 w-50 mx-auto p-3" v-for="item in orders" :key="item.id">
       <div class="d-flex">
         <div>
@@ -21,7 +25,7 @@
         <div class="mx-auto" v-show="item.quantity <= 2 ">
           <i class="fa fa-check"></i>
         </div>
-        <div class="mx-auto" v-show="item.quantity >= 2 ">
+        <div class="mx-auto" v-show="item.quantity > 2 ">
           <div>
             <i class="fa fa-history"></i>
           </div>
@@ -36,15 +40,18 @@
 
 <script>
 import TopBar from "../components/TopBar/TopBar";
+import PendingApiCall from "../components/PendingApiCall";
 import jwttoken from "jwt-decode";
 import Axios from "axios";
 export default {
   components: {
-    TopBar
+    TopBar,
+    PendingApiCall
   },
   data() {
     return {
-      orders: []
+      orders: [],
+      pendingApiCall: true
     };
   },
   created() {
@@ -65,6 +72,7 @@ export default {
       headers: { Authorization: "Bearer " + token }
     }).then(res => {
       this.orders = res.data;
+      this.pendingApiCall = false;
     });
   }
 };
@@ -73,7 +81,8 @@ export default {
 <style>
 .orders {
   background-color: #f1f1f1;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 .order {
   border-radius: 20px;

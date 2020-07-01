@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abc.API.DTO;
 using Abc.API.Errors;
+using Abc.API.Validation;
 using Abc.Core.Entities;
 using Abc.Core.Interfaces;
 using Abc.Core.Specifications;
@@ -44,6 +45,32 @@ namespace Abc.API.Controllers
         [HttpPost("address")]
         public async Task<ActionResult<bool>> AddAddress([FromBody] Address address)
         {
+
+            var validation = new AddressValidator();
+
+            var result = validation.Validate(address).Errors;
+            var errors = new Dictionary<string, string>();
+            int count = 0;
+            foreach (var validationFailure in result)
+            {
+                count++;
+                var checkPrevValue = errors.Where(x => x.Key == validationFailure.PropertyName).FirstOrDefault();
+                if (checkPrevValue.Value != null)
+                {
+                    errors.Add(validationFailure.PropertyName + count, validationFailure.ErrorMessage);
+                }
+                else
+                {
+                    errors.Add(validationFailure.PropertyName, validationFailure.ErrorMessage);
+                }
+
+            }
+            if (errors.Count != 0)
+            {
+                return BadRequest(new APIResponse(400, errors));
+            }
+
+
             var userId = HttpContext.User.Identity.Name;
 
             address.UserId = userId;
