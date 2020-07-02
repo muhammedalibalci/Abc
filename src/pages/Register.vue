@@ -3,7 +3,7 @@
     <TopBar />
     <div class="row container mx-auto">
       <div
-        class="card col-xl-4 col-md-6 col-sm-6 col-8 c-register shadow pl-5 pr-5 pt-3 pb-4  mx-auto mt-5"
+        class="card col-xl-4 col-md-6 col-sm-6 col-12 c-register shadow pl-5 pr-5 pt-3 pb-4  mx-auto mt-5"
       >
         <h5 class="text-center">Register</h5>
         <hr />

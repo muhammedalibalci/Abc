@@ -2,7 +2,7 @@
   <div class="login">
     <TopBar />
     <div class="row container mx-auto">
-      <div class="card c-login col-xl-4 col-md-6 col-8 col-sm-8 shadow pl-5 pr-5 pb-5 pt-3 mx-auto mt-5">
+      <div class="card c-login col-xl-4 col-md-6 col-12 col-sm-8 shadow pl-5 pr-5 pb-5 pt-3 mx-auto mt-5">
         <h5 class="text-center">Login</h5>
         <hr />
         <h6 class="text-center l-error" v-show="errors">{{errors.message}}</h6>

@@ -1,7 +1,7 @@
 <template>
   <div class="modal">
-    <div class="container w-50">
-      <div class="modal-content p-5">
+    <div class="container row mx-auto">
+      <div class="modal-content p-5 ">
         <div class="text-center" v-show="pendingApiCall">
           <PendingApiCall />
         </div>
@@ -59,7 +59,7 @@
           </form>
         </div>
         <br />
-        <button class="btn btn-pay" @click="payment">Pay</button>
+        <button class="btn btn-pay w-50 mx-auto" @click="payment">Pay</button>
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="pb-5">
-    <div class="products w-100 container mt-5">
+    <div class="products w-100 container mt-5 row  mx-auto">
       <div class="text-center" v-show="pendingApiCall">
         <PendingApiCall />
       </div>
       <section
-        class="card ml-5 mb-4 p-2 card-product shadow mx-auto"
+        class="card   mb-4 p-2 card-product shadow mx-auto"
         v-for="product in products"
         :key="product.id"
       >
