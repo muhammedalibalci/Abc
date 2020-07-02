@@ -2,13 +2,19 @@
   <div class="checkout">
     <Topbar />
     <h4 class="text-center mt-2">Checkout</h4>
-    <div class="d-flex justify-content-center mt-4">
-      <AddressSection
+    <div class="row container mt-4">
+      <div class="col-xl-6 col-md-6 mx-auto">
+ <AddressSection
         :currentAddress="currentAddress"
         :onClickAddress="onClickAddress"
         :onClickRadio="onClickRadio"
       />
+      </div>
+      <div class="col-xl-4 col-md-6 mb-5">
       <Summary :currentAddress="currentAddress" :onClickRadio="onClickRadio" />
+
+      </div>
+     
     </div>
   </div>
 </template>

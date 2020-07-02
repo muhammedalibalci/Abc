@@ -16,8 +16,5 @@ export default {};
 </script>
 
 <style>
-.nav-item{
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 18px;
-}
+
 </style>

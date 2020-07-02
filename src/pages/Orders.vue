@@ -9,29 +9,35 @@
       <PendingApiCall />
     </div>
     <h4 class="text-center mt-4" v-if="orders.length === 0 && !pendingApiCall">Not Found Anything :(</h4>
-    <div class="card order shadow mt-2 w-50 mx-auto p-3" v-for="item in orders" :key="item.id">
-      <div class="d-flex">
-        <div>
-          <img :src="item.productDetail.product.imageUrl" alt="..." width="100" height="70" />
-        </div>
-        <div class="mx-auto">
-          <h5>{{item.productDetail.product.name}}</h5>
+    <div class="row container mx-auto d-block">
+      <div
+        class="card col-xl-8 col-md-8 mx-auto col-sm-12 order shadow mt-2 p-3"
+        v-for="item in orders"
+        :key="item.id"
+      >
+        <div class="d-flex">
           <div>
-            <i class="fa fa-calendar"></i>
-            {{item.order.createdDate.split('T')[0]}}
+            <img :src="item.productDetail.product.imageUrl" alt="..." width="100" height="70" />
           </div>
-        </div>
+          <div class="mx-auto">
+            <h5>{{item.productDetail.product.name}}</h5>
+            <div>
+              <i class="fa fa-calendar"></i>
+              {{item.order.createdDate.split('T')[0]}}
+            </div>
+          </div>
 
-        <div class="mx-auto" v-show="item.quantity <= 2 ">
-          <i class="fa fa-check"></i>
-        </div>
-        <div class="mx-auto" v-show="item.quantity > 2 ">
-          <div>
-            <i class="fa fa-history"></i>
+          <div class="mx-auto" v-show="item.quantity <= 2 ">
+            <i class="fa fa-check"></i>
           </div>
-        </div>
-        <div class="ml-auto">
-          <div class="o-price">${{item.quantity* item.productDetail.product.price}}</div>
+          <div class="mx-auto" v-show="item.quantity > 2 ">
+            <div>
+              <i class="fa fa-history"></i>
+            </div>
+          </div>
+          <div class="ml-auto">
+            <div class="o-price">${{item.quantity* item.productDetail.product.price}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -86,6 +92,7 @@ export default {
 }
 .order {
   border-radius: 20px;
+  display: block;
 }
 .btn-back {
   border-radius: 5px;

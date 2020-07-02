@@ -22,9 +22,8 @@
         <Three />
         <div class="w-sub p-5">
           <h3 class="mb-4">We handle all of your travel needs</h3>
-          <div
-            class="w-50 mx-auto"
-          >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime nam rerum vel earum error fugiat cupiditate, dolore eius! Minus, explicabo.</div>
+          <div class="w-50 mx-auto">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime nam rerum vel earum error fugiat cupiditate, dolore eius! Minus, explicabo.</div>
         </div>
         <Two/>
       </div>

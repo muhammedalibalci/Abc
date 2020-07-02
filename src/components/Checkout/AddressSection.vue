@@ -37,7 +37,7 @@
       <div></div>
     </div>
     <button
-      class="btn btn-address btn-sm mt-2"
+      class="btn btn-address btn-sm mt-2 mb-3"
       @click="()=>this.$router.push('add-address')"
     >New Address</button>
     <button class="btn btn-pay btn-sm mt-2 ml-2" v-if="onClickRadio" @click="paymentSection=true">

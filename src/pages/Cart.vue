@@ -8,24 +8,24 @@
         </div>
         <hr />
         <div class="card-body row text-center" v-for="(cart,index) in carts" :key="index">
-          <div class="col-1 p-2" @click="onClickDelete(cart.id)">
+          <div class="col-xl-1 col-md-1 p-2" @click="onClickDelete(cart.id)">
             <i class="fa fa-times-circle i-remove-color"></i>
           </div>
-          <div class="col-2">
+          <div class="col-xl-2 col-md-2 ">
             <img :src="cart.productDetail.product.imageUrl" alt="..." width="100" height="70" />
           </div>
-          <div class="col-2 p-name p-2">
+          <div class="col-xl-2 col-md-2 p-name p-2">
             <div class>{{cart.productDetail.product.name}}</div>
           </div>
-          <div class="col-2 p-2">
+          <div class="col-xl-2 col-md-2 p-2">
             <div class>$ {{cart.productDetail.product.price}}</div>
           </div>
-          <div class="col-2 p-2">
+          <div class="col-xl-2 col-md-2 p-2">
             <button class="btn btn-sm btn-secondary mr-1 mb-1" @click="decreaseProduct(cart)">-</button>
             <span class="quantity">{{cart.quantity}}</span>
             <button class="btn btn-sm btn-primary ml-1 mb-1" @click="increaseProduct(cart)">+</button>
           </div>
-          <div class="col-2 p-2">
+          <div class="col-xl-2 col-md-2 p-2">
             <div class>$ {{cart.productDetail.product.price * cart.quantity}}</div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg  pl-5">
     <router-link to="/" class="navbar-brand">
-       E-Commerce
+       eCommerce
     </router-link>
     <button
       class="navbar-toggler"
@@ -44,9 +44,14 @@ export default {
   
 }
 .navbar-brand {
-  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2em;
   font-weight: 700;
   color: white;
 
+}
+.navbar-toggler-icon{
+  background-color: white;
+  border-radius: 15px;
+  font-size: 0.5rem;
 }
 </style>
