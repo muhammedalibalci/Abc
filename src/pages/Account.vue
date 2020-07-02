@@ -113,7 +113,8 @@ export default {
 <style>
 .my-account {
   background-color: #f1f1f1;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   color: black;
 }
 .btn-o {

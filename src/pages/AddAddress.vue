@@ -10,7 +10,7 @@
       v-show="messageVisible"
     >Added Address Successfully</div>
     <div class="row container  mx-auto">
-      <div class="col-xl-4 col-md-6 col-sm-8 col-10 mt-2 card shadow p-5 pt-4 mx-auto">
+      <div class="col-xl-4 col-md-6 col-sm-8 col-12 mt-2 card shadow p-5 pt-4 mx-auto">
         <div class="text-center mb-2" v-if="pendingApiCall">
           <PendingApiCall />
         </div>

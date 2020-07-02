@@ -3,29 +3,32 @@
     <TopBar />
     <div>
       <div class="container-wrap">
-        <img
-          class="wallpaper"
-          src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-          alt
-        />
-        <div class="centered">
-          <h1 class="title mb-4">Welcome to eCommerce</h1>
-          <h5
-            class="sub-title"
-          >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci eum error earum soluta voluptatum nisi laboriosam eos saepe asperiores dolorum.</h5>
-          <button
-            class="btn t-button mt-4"
-            @click="()=>this.$router.push('/products')"
-          >look products</button>
+        <div class="row mx-auto p-5 ">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 mx-auto">
+            <h1 class="title mb-4">Welcome to eCommerce</h1>
+          </div>
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 mx-auto">
+            <h5
+              class="sub-title"
+            >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci eum error earum soluta voluptatum nisi laboriosam eos saepe asperiores dolorum.</h5>
+          </div>
+
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 w-100 ">
+            <button
+              class="btn t-button mt-4"
+              @click="()=>this.$router.push('/products')"
+            >look products</button>
+          </div>
         </div>
         <WallPaperSub />
         <Three />
         <div class="w-sub p-5">
           <h3 class="mb-4">We handle all of your travel needs</h3>
-          <div class="w-50 mx-auto">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime nam rerum vel earum error fugiat cupiditate, dolore eius! Minus, explicabo.</div>
+          <div
+            class="w-50 mx-auto"
+          >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime nam rerum vel earum error fugiat cupiditate, dolore eius! Minus, explicabo.</div>
         </div>
-        <Two/>
+        <Two />
       </div>
       <div>
         <Footer />
@@ -53,14 +56,6 @@ export default {
 </script>
 
 <style>
-.wallpaper {
-  width: 100%;
-  height: 600px;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .container-wrap {
   position: relative;
   text-align: center;
