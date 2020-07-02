@@ -12,7 +12,7 @@
         <div class="p-3">
           <img :src="product.imageUrl" alt="..." width="100%" height="100%" />
         </div>
-        <div class="card-body text-center">
+        <div class="card-body text-center ">
           <router-link :to="'/product/'+ product.id" class="card-name-router">
             <h5 class="card-title">{{product.name}}</h5>
           </router-link>
