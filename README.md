@@ -1,5 +1,5 @@
-# client
 
+e-commerce .Net Core -  Vue js  - PostgreSql - jwt - vuex
 ## Project setup
 ```
 npm install
