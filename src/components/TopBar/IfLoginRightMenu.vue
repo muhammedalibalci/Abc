@@ -58,7 +58,7 @@ export default {
   font-size: 1.1rem;
 }
 .account {
-  color: white;
+  color: white !important;
   text-decoration: none;
 }
 a:hover() {
