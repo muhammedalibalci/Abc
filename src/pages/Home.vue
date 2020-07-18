@@ -5,7 +5,7 @@
       <div class="container-wrap">
         <div class="row mx-auto p-5 ">
           <div class="col-xl-12 col-md-12 col-sm-12 col-12 mx-auto">
-            <h1 class="title mb-4">Welcome to eCommerce</h1>
+            <h1 class="title mb-4">Welcome to ABC</h1>
           </div>
           <div class="col-xl-12 col-md-12 col-sm-12 col-12 mx-auto">
             <h5

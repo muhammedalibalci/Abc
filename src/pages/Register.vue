@@ -16,6 +16,8 @@
             :class="{'m-alert':errors.Name}"
             placeholder="Name"
             @change="onChangeInput"
+            @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <div class="form-group mb-2">
@@ -28,6 +30,8 @@
             :class="{'m-alert':errors.LastName}"
             placeholder="Last Name"
             @change="onChangeInput"
+            @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <div class="form-group mb-2">
@@ -38,8 +42,10 @@
             name="UserName"
             class="form-control"
             :class="{'m-alert':errors.UserName}"
-            placeholder="UserName"
+            placeholder="User Name"
             @change="onChangeInput"
+            @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <div class="form-group mb-2">
@@ -51,6 +57,8 @@
             :class="{'m-alert':errors.Email}"
             placeholder="Email"
             @change="onChangeInput"
+            @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <div class="form-group mb-2">
@@ -63,6 +71,8 @@
             :class="{'m-alert':errors.Password}"
             placeholder="Password"
             @change="onChangeInput"
+            @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <button
@@ -96,7 +106,8 @@ export default {
         LastName: ""
       },
       pendingApiCall: false,
-      disableButton: true
+      disableButton: true,
+      disableInputs:false
     };
   },
   created() {

@@ -14,6 +14,7 @@
             placeholder="Email"
             @change="onChangeInput"
             @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <div class="form-group mt-3">
@@ -24,6 +25,7 @@
             placeholder="Password"
             @change="onChangeInput"
             @keydown="onChangeInput"
+            :disabled="disableInputs"
           />
         </div>
         <button
@@ -50,7 +52,8 @@ export default {
     return {
       auth: {},
       pendingApiCall: false,
-      disableButton: true
+      disableButton: true,
+      disableInputs:false
     };
   },
   computed: {
@@ -85,7 +88,7 @@ export default {
     },
     onClickLoginButton() {
       this.disableButton = true;
-
+      this.disableInputs = true
       this.pendingApiCall = true;
       this.$store
         .dispatch("login", this.auth)

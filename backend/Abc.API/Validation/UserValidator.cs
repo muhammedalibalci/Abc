@@ -14,6 +14,7 @@ namespace Abc.API.Validation
         {
             RuleFor(c => c.Name).NotEmpty().WithMessage("First name must be filled out");
             RuleFor(c => c.LastName).NotEmpty().WithMessage("Last name must be filled out");
+            RuleFor(c => c.UserName).NotEmpty().WithMessage("User name must be filled out");
             RuleFor(c => c.Password).NotEmpty().WithMessage("Password name must be filled out")
                 .Must(d => d.Length >= 6).WithMessage("Passowrd must be 6 to 20 character")
                 .Matches("[A-Z]").WithMessage("Should have at least one upper case")

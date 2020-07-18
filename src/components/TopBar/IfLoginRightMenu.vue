@@ -3,11 +3,13 @@
     <ul class="navbar-nav ml-auto ">
       <li class="nav-link">
         <router-link to="/my-account" class="account">
-          <span>My Account</span>
+          <span><i class="fa fa-user-circle"></i> My Account</span>
         </router-link>
       </li>
       <li class="nav-link mr-5">
-        <span @click="logout">Log out</span>
+        <router-link to="/"  class="account">
+          <span @click="logout"><i class="fa fa-sign-out"></i> Log out</span>
+        </router-link>
       </li>
       <li class="nav-item ">
         <router-link class="nav-link" to="/cart">
@@ -27,9 +29,6 @@ export default {
     cartsLength() {
       return this.$store.getters.getCarts.length;
     }
-  },
-  props: {
-    user: Object
   },
   methods: {
     logout() {

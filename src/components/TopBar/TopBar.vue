@@ -12,9 +12,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <IfLoginRightMenu v-if="credentials" :user="credentials" />
+    
     <NormalRightMenu v-if="!credentials" />
 
-    <IfLoginRightMenu v-if="credentials" :user="credentials" />
   </nav>
 </template>
 
@@ -27,7 +28,7 @@ export default {
     NormalRightMenu,
     IfLoginRightMenu
   },
-  created(){
+  beforeMount(){
     this.$store.commit('initCart')
   },
   computed: {

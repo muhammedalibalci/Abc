@@ -85,7 +85,10 @@ namespace Abc.API.Controllers
 
             foreach (var validationFailure in resultValidaton)
             {
-                var checkPrevValue = errors.Where(x => x.Key == validationFailure.PropertyName).FirstOrDefault();
+                var checkPrevValue = errors
+                    .Where(x => x.Key == validationFailure.PropertyName)
+                    .FirstOrDefault();
+
                 if (checkPrevValue.Value != null)
                 {
                     count++;
@@ -110,7 +113,7 @@ namespace Abc.API.Controllers
 
             if (_userManager.FindByNameAsync(registerDto.UserName).Result != null)
             {
-                errors.Add("Email",  "User name is already in use");
+                errors.Add("UserName",  "User name is already in use");
                 return  BadRequest(new APIResponse(400, errors));
             }
 
