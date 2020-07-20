@@ -36,6 +36,12 @@ namespace Abc.API.Controllers
             return Ok(await _productService.GetAll(id));
         }
 
+        [HttpGet("productDetail/{id}")]
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetAllProductDetails([FromRoute] int id)
+        {
+            return Ok(await _productService.GetAllProductDetailsByCategoryId(id));
+        }
+
         [HttpGet("{id}")]
         [Obsolete]
         public async Task<ActionResult<Product>> Get([FromRoute] int id)

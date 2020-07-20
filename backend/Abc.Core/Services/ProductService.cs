@@ -34,6 +34,15 @@ namespace Abc.Core.Services
            
             return data;
         }
+
+        public async Task<IReadOnlyList<ProductDetail>> GetAllProductDetailsByCategoryId(int categoryId)
+        {
+            ProductDetailSpecification spec = new ProductDetailSpecification(categoryId);
+
+            var data = await _unitOfWork.Repository<ProductDetail>().ListAsync(spec);
+
+            return data;
+        }
         public  Task<Product> Add(Product post)
         {
             return _unitOfWork.Repository<Product>().Add(post);
@@ -55,5 +64,7 @@ namespace Abc.Core.Services
             await _unitOfWork.Complete();
             return result;
         }
+
+
     }
 }

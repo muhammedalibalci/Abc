@@ -9,6 +9,7 @@ namespace Abc.Core.Interfaces
     public interface IProductService
     {
         Task<IReadOnlyList<Product>> GetAll(int id);
+        Task<IReadOnlyList<ProductDetail>> GetAllProductDetailsByCategoryId(int categoryId);
         Task<Product> Get(int id);
         Task<Product> Add(Product product);
         Task<Product> Delete(int id);
