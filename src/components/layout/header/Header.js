@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/authAction'
+
+import './navbar.css'
+
 class Header extends Component {
 
 
@@ -15,10 +18,11 @@ class Header extends Component {
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item mr-4 mb-2">
+      
+        <li className="nav-item mr-4 ">
           <Link to="/login">Login</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item ">
           <Link to="/register">Sign up</Link>
         </li>
       </ul>
@@ -53,7 +57,9 @@ class Header extends Component {
           >
             <i className="fa fa-align-justify"></i>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarResponsive">
+
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>

@@ -14,6 +14,7 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const PRODUCT_LOADING = "PRODUCT_LOADING";
+export const GET_PRODUCTS_DETAILS = "GET_PRODUCTS_DETAILS"
 
 export const GET_CART = "GET_CART";
 export const CLEAR_CART = "CLEAR_CART";

@@ -1,11 +1,22 @@
 import React from 'react'
 import Header from './layout/header/Header'
 import './App.css'
-export default function App(props) {
+import { Footer } from './layout/footer/Footer'
+import { connect } from 'react-redux'
+function App(props) {
     return (
         <div >
-            <Header/> 
+            <Header />
             {props.children}
+            {!props.loading && <Footer />}
         </div>
     )
 }
+
+
+const mapStateToProps = state => ({
+    loading: state.product.loading
+});
+export default connect(
+    mapStateToProps,
+)(App);

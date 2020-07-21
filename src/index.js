@@ -11,6 +11,7 @@ import SignUp from './components/auth/SignUp';
 import jwtDecode from "jwt-decode";
 import { AUTH_USER } from './actions/types';
 import { logout } from './actions/authAction';
+import Products from './components/product/Products';
 
 if (localStorage.token) {
   if (jwtDecode(localStorage.getItem("token")).exp > Date.now()) {
@@ -34,6 +35,7 @@ ReactDOM.render(
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={SignUp} />
+            <Route path="/products" component={Products} />
           </Switch>
         </App>
       </BrowserRouter>

@@ -1,0 +1,66 @@
+body{
+    background-color: white;
+}
+
+.display-3{
+    font-weight: 300;
+    line-height: 1.2;
+    font-size: 5rem;
+    text-shadow: rgb(82, 80, 80) 1px 1px 1px;
+}
+
+.c-text{
+    font-family: 'Open Sans',sans-serif;
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+.t-outer{
+    background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 400px;
+}
+
+.btn-home{
+    background-color: #6610f2;
+    border-color: #6610f2;
+    color: white;
+}
+
+.btn-home:hover{
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+
+.s-image{
+    background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 400px;
+}
+
+.two {
+    color: white;
+  }
+  .contact{
+      background-color: #2690d4;
+      border-radius: 0px;
+  }
+  .about{
+      background-color: #585d88;
+      border-radius: 0px;
+  }
+  .two-text{
+      font-size: 1.2rem;
+  }
+
+  .sub-wal {
+    background-color: #f1f1f1;
+    color: black;
+  }
