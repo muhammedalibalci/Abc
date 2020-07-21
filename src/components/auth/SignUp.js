@@ -48,7 +48,7 @@ class SignUp extends Component {
     render() {
         const { email, password, name, lastName, userName } = this.state
         return (
-            <div className="container mt-5 " >
+            <div className="container mt-5 signup-container" >
                 <div className="card shadow mx-auto text-center p-5 w-50">
                     <h3 className="login-title">
                         <i className="fa fa-user" aria-hidden="true"></i>  Sign Up User

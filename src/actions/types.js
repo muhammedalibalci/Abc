@@ -16,7 +16,10 @@ export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const PRODUCT_LOADING = "PRODUCT_LOADING";
 export const GET_PRODUCTS_DETAILS = "GET_PRODUCTS_DETAILS"
 
-export const GET_CART = "GET_CART";
+export const ADD_CART = "ADD_CART";
+export const DELETE_CART = "DELETE_CART";
+export const UPDATE_CART = "UPDATE_CART";
+export const GET_CARTS = "GET_CARTS";
 export const CLEAR_CART = "CLEAR_CART";
 export const CART_LOADING = "CART_LOADING";
 

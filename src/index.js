@@ -12,6 +12,9 @@ import jwtDecode from "jwt-decode";
 import { AUTH_USER } from './actions/types';
 import { logout } from './actions/authAction';
 import Products from './components/product/Products';
+import Basket from './components/basket/Basket';
+import Product from './components/product/Product';
+import Customer from './customer/Customer';
 
 if (localStorage.token) {
   if (jwtDecode(localStorage.getItem("token")).exp > Date.now()) {
@@ -36,6 +39,9 @@ ReactDOM.render(
             <Route path="/login" component={Login} />
             <Route path="/register" component={SignUp} />
             <Route path="/products" component={Products} />
+            <Route path="/basket" component={Basket} />
+            <Route path="/product/:id" component={Product} />
+            <Route path="/account" component={Customer} />
           </Switch>
         </App>
       </BrowserRouter>
@@ -46,7 +52,3 @@ ReactDOM.render(
 );
 
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

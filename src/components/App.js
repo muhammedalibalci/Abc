@@ -8,7 +8,6 @@ function App(props) {
         <div >
             <Header />
             {props.children}
-            {!props.loading && <Footer />}
         </div>
     )
 }

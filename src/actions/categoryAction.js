@@ -12,8 +12,7 @@ export const getCategories = () => async dispatch => {
         dispatch({ type: CATEGORY_LOADING, payload: false });
         dispatch({ type: GET_CATEGORIES, payload: res.data });
     }).catch(error => {
-        const err = JSON.parse(error.message);
-        dispatch({ type: GET_ERRORS, payload: err });
+        dispatch({ type: GET_ERRORS, payload: error });
         dispatch({ type: CATEGORY_LOADING, payload: false });
     })
 };

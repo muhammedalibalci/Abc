@@ -1,0 +1,55 @@
+.g-basket{
+    margin-top: 10px;
+    margin-bottom: 20%;
+}
+
+.card-title {
+    color: #444;
+    padding: 5px;
+    font-weight: 300;
+    font-size: 1.5em;
+    font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  .card-body {
+    font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  .fa-times-circle {
+    font-weight: 900;
+  }
+  .p-name {
+    font-weight: bold;
+    font-size: 1em;
+    font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  .sub-text {
+    color: rgb(68, 68, 68);
+    font-weight: 700;
+    font-size: 1em;
+  }
+  .btn-checkout {
+    border-radius: 5px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+  }
+  .btn-checkout:hover {
+    background-color: #fd7e14;
+    color: white;
+  }
+
+  .btn-increase {
+    background-color: white;
+    border-color: black;
+    color: black;
+  }
+
+  .btn-secondary {
+    background-color: white;
+    border-color: black;
+    color: black;
+  }
+  .i-remove-color{
+    font-size: 1.3rem;
+  }

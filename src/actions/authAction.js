@@ -1,4 +1,4 @@
-import { AUTH_USER, GET_ERRORS, GET_CART, CLEAR_CUSTOMER, CLEAR_ERRORS, AUTH_LOADING } from "./types";
+import { AUTH_USER, GET_ERRORS,  AUTH_LOADING } from "./types";
 import jwtDecode from "jwt-decode";
 import { URL_REGISTER, URL_LOGIN } from "../utils/apiUrl";
 import Axios from "axios";
@@ -24,7 +24,6 @@ export const signUp = userData => async dispatch => {
   dispatch({ type: AUTH_LOADING, payload: true });
   await Axios.post(URL_REGISTER, userData)
     .then(res => {
-      console.log(res);
       const token = res.data.token
       const user = jwtDecode(token);
       localStorage.setItem("token", token);

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/authAction'
+import { getCarts } from '../../../actions/basketAction'
 
 import './navbar.css'
 
@@ -12,13 +13,17 @@ class Header extends Component {
     this.props.logout()
   }
 
+  componentDidMount() {
+    this.props.getCarts()
+  }
+
 
   render() {
     const { isAuthenticated } = this.props.auth;
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-      
+
         <li className="nav-item mr-4 ">
           <Link to="/login">Login</Link>
         </li>
@@ -33,9 +38,14 @@ class Header extends Component {
         <li className="nav-item mr-4">
           <Link to="/my-account">My Account</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item mr-4">
           <Link to="" onClick={this.handleOnclick}>
             Logout
+          </Link>
+        </li>
+        <li className="nav-item ml-2">
+          <Link to="/basket" >
+            <i className="fa fa-shopping-cart"></i> {this.props.cartsLength}
           </Link>
         </li>
       </ul>
@@ -69,8 +79,9 @@ class Header extends Component {
 }
 const mapStateToProps = state => ({
   auth: state.auth,
+  cartsLength: state.basket.carts.length
 });
 export default connect(
   mapStateToProps,
-  { logout }
+  { logout, getCarts }
 )(Header);

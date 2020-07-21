@@ -1,17 +1,12 @@
 import {
     GET_PRODUCTS,
     GET_PRODUCT,
-    GET_CATEGORIES,
     PRODUCT_LOADING,
     GET_ERRORS,
-    REMOVE_PRODUCT,
     GET_PRODUCTS_DETAILS
 } from "./types";
 import {
     URL_GET_PRODUCTS,
-    URL_ADMIN_PRODUCT,
-    URL_GET_PRODUCTS_BY_CATEGORY,
-    URL_GET_PRODUCT_BY_ID
 } from "../utils/apiUrl";
 import Axios from "axios";
 
@@ -20,7 +15,7 @@ export const getProductById = id => async dispatch => {
     dispatch({ type: PRODUCT_LOADING, payload: true });
     await Axios.get(`${URL_GET_PRODUCTS}/${id}`).then(res => {
         dispatch({ type: PRODUCT_LOADING, payload: false });
-        dispatch({ type: GET_PRODUCTS, payload: res.data });
+        dispatch({ type: GET_PRODUCT, payload: res.data });
     }).catch(err => {
         dispatch({ type: PRODUCT_LOADING, payload: false });
         dispatch({ type: GET_ERRORS, payload: err.response.data });

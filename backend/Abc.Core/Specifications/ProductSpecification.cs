@@ -17,8 +17,9 @@ namespace Abc.Core.Specifications
 
            
         }
-        public ProductSpecification()
+        public ProductSpecification(int id)
         {
+            AddWhere(x => x.Id == id);
             AddInclude(x => x.ProductDetails);
         }
     }

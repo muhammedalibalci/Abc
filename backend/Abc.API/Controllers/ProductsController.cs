@@ -44,7 +44,6 @@ namespace Abc.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [Obsolete]
         public async Task<ActionResult<Product>> Get([FromRoute] int id)
         {
             Product product = await _productService.Get(id);
