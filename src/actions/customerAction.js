@@ -1,4 +1,11 @@
-import { GET_CUSTOMER, CLEAR_CUSTOMER, CUSTOMER_LOADING, GET_ERRORS } from './types';
+import {
+    GET_CUSTOMER,
+    CLEAR_CUSTOMER,
+    CUSTOMER_LOADING,
+    GET_ERRORS,
+    ADD_ADDRESS_LOADING,
+    CLEAR_ERRORS
+} from './types';
 import { URL_CUSTOMER } from '../utils/apiUrl';
 import Axios from 'axios';
 
@@ -6,6 +13,7 @@ const token = localStorage.getItem('token')
 
 export const getCustomer = (id) => async dispatch => {
     dispatch({ type: CUSTOMER_LOADING, payload: true });
+    dispatch({ type: CLEAR_ERRORS });
     await Axios.get(`${URL_CUSTOMER}/${id}`).then(res => {
         dispatch({ type: GET_CUSTOMER, payload: res.data });
     }).catch(err => {
@@ -15,16 +23,19 @@ export const getCustomer = (id) => async dispatch => {
 
 export const addCustomerAddress = addressData => async dispatch => {
     return new Promise((resolve, reject) => {
-        dispatch({ type: CUSTOMER_LOADING, payload: true });
-         Axios.post(`${URL_CUSTOMER}/address`, addressData, {
+        dispatch({ type: ADD_ADDRESS_LOADING, payload: true });
+        Axios.post(`${URL_CUSTOMER}/address`, addressData, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         }).then(res => {
             dispatch({ type: GET_CUSTOMER, payload: res.data });
+            dispatch({ type: ADD_ADDRESS_LOADING, payload: false });
             resolve(true)
         }).catch(err => {
-            console.log(err);
+            dispatch({ type: CLEAR_ERRORS });
+            dispatch({ type: ADD_ADDRESS_LOADING, payload: false })
+            dispatch({ type: GET_ERRORS, payload: err.response.data });
             reject(false)
         })
     })
@@ -33,12 +44,11 @@ export const addCustomerAddress = addressData => async dispatch => {
 export const deleteCustomerAddress = id => async dispatch => {
     return new Promise((resolve, reject) => {
         dispatch({ type: CUSTOMER_LOADING, payload: true });
-         Axios.delete(`${URL_CUSTOMER}/${id}/address`, {
+        Axios.delete(`${URL_CUSTOMER}/${id}/address`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         }).then(res => {
-            dispatch({ type: GET_CUSTOMER, payload: res.data });
             resolve(true)
         }).catch(err => {
             console.log(err);

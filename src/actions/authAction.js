@@ -1,4 +1,4 @@
-import { AUTH_USER, GET_ERRORS,  AUTH_LOADING } from "./types";
+import { AUTH_USER, GET_ERRORS,  AUTH_LOADING, CLEAR_ERRORS } from "./types";
 import jwtDecode from "jwt-decode";
 import { URL_REGISTER, URL_LOGIN } from "../utils/apiUrl";
 import Axios from "axios";
@@ -15,6 +15,7 @@ export const login = userData => async dispatch => {
       dispatch({ type: AUTH_USER, payload: user });
     }).catch(error => {
       dispatch({ type: AUTH_LOADING, payload: false });
+      dispatch({ type: CLEAR_ERRORS});
       dispatch({ type: GET_ERRORS, payload: { error: error.response.data.message } });
     })
 };

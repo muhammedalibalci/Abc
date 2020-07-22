@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AddressTable = ({address,deleteAddress}) => {
+export const AddressTable = ({ addresses, deleteAddress }) => {
     return (
         <div className="mt-4">
             <h5>My Address</h5>
@@ -15,15 +15,20 @@ export const AddressTable = ({address,deleteAddress}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th className="pl-5 pr-5 thead-f">{address.address1}</th>
-                        <th className="pl-5 pr-5 thead-f">{address.postCode}</th>
-                        <th className="pl-5 pr-5 thead-f">{address.city}</th>
-                        <th className="pl-5 pr-5 thead-f">{address.phone}</th>
-                        <th className="pl-5 pr-5 thead-f" onClick={deleteAddress}>
-                            <i className="fa fa-minus-circle"></i>
-                        </th>
-                    </tr>
+                    {
+                        addresses && addresses.map(address => {
+                            return <tr key={address.id}>
+                                <th className="pl-5 pr-5 thead-f">{address.address1}</th>
+                                <th className="pl-5 pr-5 thead-f">{address.postCode}</th>
+                                <th className="pl-5 pr-5 thead-f">{address.city}</th>
+                                <th className="pl-5 pr-5 thead-f">{address.phone}</th>
+                                <th className="pl-5 pr-5 thead-f" onClick={(e)=>deleteAddress(e,address.id)}>
+                                    <i className="fa fa-minus-circle"></i>
+                                </th>
+                            </tr>
+                        })
+                    }
+
                 </tbody>
             </table>
         </div>

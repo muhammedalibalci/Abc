@@ -6,14 +6,15 @@ import jwtDecode from "jwt-decode";
 import { connect } from 'react-redux';
 import './Customer.css'
 import Spinner from '../components/common/spinner/Spinner';
-import { AddAddress } from './AddAddress';
+import AddAddress from './AddAddress';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Customer extends Component {
 
     state = {
         addressSection: false
     }
-
     componentDidMount() {
         const id = jwtDecode(localStorage.getItem('token')).unique_name
         this.props.getCustomer(id)
@@ -22,7 +23,12 @@ class Customer extends Component {
     deleteAddress = (e, id) => {
         e.preventDefault();
 
-        this.props.deleteCustomerAddress(id)
+        this.props.deleteCustomerAddress(id).then(res => {
+            const userId = jwtDecode(localStorage.getItem('token')).unique_name
+            this.props.getCustomer(userId)
+            this.notify()
+        })
+
     }
 
     openModal = () => {
@@ -36,23 +42,20 @@ class Customer extends Component {
             addressSection: false
         })
     }
+    notify = () => toast.error("Product Deleted Successfully !");
 
     render() {
-        const { addresses, loading } = this.props.customer
+        const { customer, loading } = this.props.customer
         let addressTableDisplay;
-
+        console.log(loading);
         if (loading) {
             return <Spinner classNames="spinner1" />;
         } else {
             addressTableDisplay = (
-                addresses && addresses.map(address => {
-                    return <AddressTable
-                        key={address.id}
-                        address={address}
-                        deleteAddress={e => {
-                            this.deleteAddress(e, address.id)
-                        }} />
-                })
+                <AddressTable
+                    addresses={customer.addresses && customer.addresses.filter(a => a.isDeleted === false)}
+                    deleteAddress={this.deleteAddress}
+                />
             )
         }
 
@@ -60,9 +63,13 @@ class Customer extends Component {
             <div className="my-account">
                 <div className="container pt-4">
                     <CustomerInfo />
+                    <ToastContainer
+                        autoClose={2000}
+                        hideProgressBar={true} />
                     <AddAddress
                         closeModal={this.closeModal}
-                        modalIsOpen={this.state.addressSection} />
+                        modalIsOpen={this.state.addressSection}
+                        addresses={this.props.customer.addresses} />
                     <div className="d-flex ml-4 mt-4">
                         <button className="btn btn-o mr-4" onClick={this.openModal}>
                             <i className="fa fa-map-marker"></i> Add Address

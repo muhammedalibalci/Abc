@@ -1,8 +1,9 @@
-import { GET_CUSTOMER, CUSTOMER_LOADING, CLEAR_CUSTOMER } from '../actions/types';
+import { GET_CUSTOMER, CUSTOMER_LOADING, CLEAR_CUSTOMER, ADD_ADDRESS_LOADING } from '../actions/types';
 
 const initialState = {
-    customer: null,
+    customer: {},
     loading: false,
+    add_loading:false,
     errors: {}
 }
 
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loading: action.payload
+            };
+        case ADD_ADDRESS_LOADING:
+            return {
+                ...state,
+                add_loading: action.payload
             }
         case CLEAR_CUSTOMER:
             return {

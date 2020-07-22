@@ -41,7 +41,7 @@ ReactDOM.render(
             <Route path="/products" component={Products} />
             <Route path="/basket" component={Basket} />
             <Route path="/product/:id" component={Product} />
-            <Route path="/account" component={Customer} />
+            <Route path="/my-account" component={Customer} />
           </Switch>
         </App>
       </BrowserRouter>
