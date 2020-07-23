@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { CustomerInfo } from './CustomerInfo'
 import { AddressTable } from './AddressTable'
-import { getCustomer, deleteCustomerAddress } from '../actions/customerAction'
+import { getCustomer, deleteCustomerAddress } from '../../actions/customerAction'
 import jwtDecode from "jwt-decode";
 import { connect } from 'react-redux';
 import './Customer.css'
-import Spinner from '../components/common/spinner/Spinner';
+import Spinner from '../common/spinner/Spinner';
 import AddAddress from './AddAddress';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 class Customer extends Component {
 
@@ -53,7 +54,8 @@ class Customer extends Component {
         } else {
             addressTableDisplay = (
                 <AddressTable
-                    addresses={customer.addresses && customer.addresses.filter(a => a.isDeleted === false)}
+                    addresses={customer.addresses
+                         && customer.addresses.filter(a => a.isDeleted === false)}
                     deleteAddress={this.deleteAddress}
                 />
             )
@@ -74,7 +76,7 @@ class Customer extends Component {
                         <button className="btn btn-o mr-4" onClick={this.openModal}>
                             <i className="fa fa-map-marker"></i> Add Address
                         </button>
-                        <button className="btn btn-o" >
+                        <button className="btn btn-o" onClick={() => this.props.history.push('/orders')}>
                             <i className="fa fa-shopping-basket"></i> My Shopping
                         </button>
                     </div>

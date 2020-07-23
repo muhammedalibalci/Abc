@@ -14,7 +14,9 @@ import { logout } from './actions/authAction';
 import Products from './components/product/Products';
 import Basket from './components/basket/Basket';
 import Product from './components/product/Product';
-import Customer from './customer/Customer';
+import Customer from './components/customer/Customer';
+import Checkout from './components/checkout/Checkout';
+import  Orders  from './components/customer/Orders';
 
 if (localStorage.token) {
   if (jwtDecode(localStorage.getItem("token")).exp > Date.now()) {
@@ -42,6 +44,8 @@ ReactDOM.render(
             <Route path="/basket" component={Basket} />
             <Route path="/product/:id" component={Product} />
             <Route path="/my-account" component={Customer} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/orders" component={Orders} />
           </Switch>
         </App>
       </BrowserRouter>

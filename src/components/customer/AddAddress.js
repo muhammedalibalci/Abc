@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal';
-import { getCustomer,addCustomerAddress } from '../actions/customerAction'
+import { getCustomer,addCustomerAddress } from '../../actions/customerAction'
 import { AddAddressForm } from './AddAddressForm';
 import { connect } from 'react-redux';
-import Spinner from '../components/common/spinner/Spinner';
+import Spinner from '../common/spinner/Spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import JwtDecode from 'jwt-decode';
@@ -53,7 +53,6 @@ class AddAddress extends Component {
                 isOpen={this.props.modalIsOpen}
                 onRequestClose={this.props.closeModal}
                 className="modal-content"
-                contentLabel="Example Modal"
             >
                 <h3 className="text-center">Add Address</h3>
                 {

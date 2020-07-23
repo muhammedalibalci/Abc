@@ -1,5 +1,5 @@
 import React from 'react'
-import TextField  from '../components/common/input/TextField'
+import TextField  from '../common/input/TextField'
 
 export const AddAddressForm = ({ errors, fullName, address1, postCode, city, phone, onChange, onSubmit, loading }) => {
     return (

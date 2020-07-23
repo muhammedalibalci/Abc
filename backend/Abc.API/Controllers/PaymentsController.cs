@@ -20,9 +20,12 @@ namespace Abc.API.Controllers
         [HttpPost("{id}")]
         public async Task<string> Payment([FromRoute] string id)
         {
-           await _paymentService.CreateOrUpdatePaymentIntent(id);
-
-            return "Payment Successfully";
+            var result = await _paymentService.CreateOrUpdatePaymentIntent(id);
+            if (result)
+            {
+                return "Payment Successfully";
+            }
+            return "There is a error in while payment";
         }
 
 

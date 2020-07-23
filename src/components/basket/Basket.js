@@ -102,7 +102,10 @@ class Basket extends Component {
                             {basketDisplay}
                         </div>
                         <hr />
-                        <Summary carts={carts} totalAmount={this.state.amount} />
+                        <Summary 
+                        carts={carts} 
+                        totalAmount={this.state.amount}
+                      />
                     </div >
                     <div></div>
                 </div >

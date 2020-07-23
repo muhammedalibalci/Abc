@@ -30,7 +30,12 @@ namespace Abc.Core.Services
         {
             StripeConfiguration.ApiKey = _config["StripeSettings:SecretKey"];
 
-            var carts =  _cartItemService.GetAll(userId).Result;
+            var carts = await  _cartItemService.GetAll(userId);
+
+            if (carts.Count ==0)
+            {
+                return false;
+            }
 
             var service = new PaymentIntentService();
 

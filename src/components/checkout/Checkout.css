@@ -1,0 +1,24 @@
+body{
+  background-color: #f1f1f1;
+}
+.head {
+    color: #2a9af2;
+  }
+  .btn-address {
+    border-radius: 5px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+  }
+  .btn-pay {
+    border-radius: 5px;
+    background-color: orangered;
+    color: white;
+  }
+  ul {
+    list-style-type: none;
+  }
+  .c-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #454f54;
+  }
