@@ -1,25 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const OrderItem = ({ order }) => {
-    console.log(order);
     return (
-        <div className=" card w-50 mx-auto mb-2 ">
-            <div className="row">
-                <div className="col-2">
-                    <img src={order.productDetail.product.imageUrl} alt="..." width="100" height="70" />
+        <div className=" card w-50 mx-auto mb-2 p-4">
+            <div className=" d-flex justify-content-between">
+                <img src={order.productDetail.product.imageUrl} alt="..." width="100" height="80" />
+                <div className="font-weight-bold">
+                    <Link to={`product/${order.productDetail.product.id}`} className="o-link">
+                        {order.productDetail.product.name}
+                    </Link>
                 </div>
-                <div className="col-4 p-name p-2">
-                    <div >{order.productDetail.product.name}</div>
-                </div>
-                <div className="col-2  p-2">
-                    <div >{order.order.createdDate.split('T')[0]}</div>
-                </div>
-                <div className="col-2 p-2">
-                    <div >$ {order.productDetail.product.price}</div>
-                </div>
-                <div className="col-2 p-2 ml-auto">
-                    <div >$  {order.productDetail.product.price * order.quantity}</div>
-                </div>
+                <div >{order.order.createdDate.split('T')[0]}</div>
+                <div >${order.productDetail.product.price}</div>
+                <div >{order.quantity} item</div>
+                <div >${order.productDetail.product.price * order.quantity}</div>
+
             </div>
         </div>
     )

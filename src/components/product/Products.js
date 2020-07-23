@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { getProductsByCategory } from '../../actions/productAction'
+import { getProductsByCategory, getProductsByFilter } from '../../actions/productAction'
 import { getProductDetails } from '../../actions/productAction'
 import { getCategories } from '../../actions/categoryAction'
 import { addCartToBasket } from '../../actions/basketAction'
@@ -13,7 +13,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class Products extends Component {
-  
+
+  state = {
+    currentCategory: "1",
+    color: "all",
+    size: "all",
+  }
+
+
   componentDidMount() {
     this.props.getProductsByCategory()
     this.props.getCategories()
@@ -21,7 +28,7 @@ class Products extends Component {
   }
 
 
-  handleOnClick = (e, cart,notify) => {
+  handleOnClick = (e, cart, notify) => {
     e.preventDefault();
     const data = {
       Quantity: 1,
@@ -29,8 +36,36 @@ class Products extends Component {
     }
 
     this.props.addCartToBasket(data)
-        .then((res)=>{notify()})
-        .catch(err=>console.log(err))
+      .then((res) => { notify() })
+      .catch(err => console.log(err))
+  }
+
+  categoryClick = (id) => {
+    this.setState({
+      currentCategory: id
+    })
+    this.props.getProductsByCategory(id)
+    this.props.getProductDetails(id)
+  }
+
+  onClickCheckBox = (value, name) => {
+    this.setState({
+      [name]: value
+    })
+  }
+
+  refreshStats = () => {
+    return new Promise((res, rej) => {
+      const { currentCategory, color, size } = this.state
+
+
+    })
+
+  }
+
+  onClickFilter =  () => {
+    const { currentCategory, color, size } = this.state
+     this.props.getProductsByFilter(currentCategory, size, color)
   }
 
   render() {
@@ -44,7 +79,7 @@ class Products extends Component {
         <ProductItem
           key={product.id}
           handleOnClick={e => {
-            this.handleOnClick(e, product,notify);
+            this.handleOnClick(e, product, notify);
           }}
           product={product}
         />
@@ -52,6 +87,7 @@ class Products extends Component {
     }
 
 
+    const { currentCategory, size, color } = this.state
     return (
       <div className="mb-5">
         <div className="text-center">
@@ -62,10 +98,20 @@ class Products extends Component {
         <h3 className="text-center mt-4 mb-4">Computers</h3>
         <div className="row">
           <div className="col-md-1 ml-4 ">
-            <Categories />
-            <ProductFilterSize />
-            <ProductFilterColor />
-            <button className="btn btn-filter w-100">Filter</button>
+
+            <Categories
+              currentCategory={currentCategory}
+              categoryClick={this.categoryClick} />
+
+            <ProductFilterSize
+              size={size}
+              onClickCheckBox={this.onClickCheckBox} />
+
+            <ProductFilterColor
+              color={color}
+              onClickCheckBox={this.onClickCheckBox} />
+
+            <button className="btn btn-filter w-100" onClick={this.onClickFilter}>Filter</button>
           </div>
           <div className="col-md-10">
             <section className="product-container">{productDisplay}</section>
@@ -81,5 +127,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { getProductsByCategory, getCategories, getProductDetails, addCartToBasket }
+  { getProductsByCategory, getCategories, getProductDetails, addCartToBasket, getProductsByFilter }
 )(Products);

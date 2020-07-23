@@ -1,6 +1,5 @@
 import React, {  Component } from 'react'
 import PaymentForm from './PaymentForm'
-
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -14,6 +13,7 @@ class Payment extends Component {
                 <PaymentForm
                     handleSubmit={this.handleSubmit}
                     addressId = {this.props.addressId}
+                    onClickPay={this.props.onClickPay}
                 />
             </Elements>
         )

@@ -1,10 +1,12 @@
-﻿using Abc.Core.Entities;
+﻿using Abc.Core.Data;
+using Abc.Core.Entities;
 using Abc.Core.Interfaces;
 using Abc.Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Abc.Core.Services
 {
@@ -24,15 +26,42 @@ namespace Abc.Core.Services
 
         }
 
-        public async Task<IReadOnlyList<Product>> GetAll(int id)
+        public  List<Product> GetAll(int id,ProductFilter filter)
         {
-            ProductSpecParams ProductSpecParams = new ProductSpecParams();
+            var query = _unitOfWork.Repository<Product>().GetTable(new Product());
+            var productDetailTable =  _unitOfWork.Repository<ProductDetail>().GetTable(new ProductDetail());
 
-            var spec = new ProductSpecification(ProductSpecParams,id);
+            query = from o in query
+                    where o.CategoryId == id
+                    select o;
 
-            var data = await _unitOfWork.Repository<Product>().ListAsync(spec);
-           
-            return data;
+            if (String.IsNullOrEmpty(filter.Color) && String.IsNullOrEmpty(filter.Size))
+            {
+                return query.ToList();
+            }
+
+            if (filter.Color == "all")
+                filter.Color = null;
+
+            if (filter.Size == "all")
+                filter.Size = null;
+
+            if (!String.IsNullOrEmpty(filter.Color))
+            {
+                query = from p in query
+                        join oi in productDetailTable on p.Id equals oi.ProductId
+                        where oi.Color == filter.Color
+                        select p;
+            }
+
+            if (!String.IsNullOrEmpty(filter.Size))
+            {
+                query = from p in query
+                        join oi in productDetailTable on p.Id equals oi.ProductId
+                        where oi.Size == filter.Size
+                        select p;
+            }
+            return query.ToList();
         }
 
         public async Task<IReadOnlyList<ProductDetail>> GetAllProductDetailsByCategoryId(int categoryId)
@@ -65,6 +94,6 @@ namespace Abc.Core.Services
             return result;
         }
 
-
+        
     }
 }

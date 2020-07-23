@@ -25,10 +25,16 @@ class Header extends Component {
       <ul className="navbar-nav ml-auto">
 
         <li className="nav-item mr-4 ">
-          <Link to="/login">Login</Link>
+          <Link to="/login">
+          <img src={require("../../../assets/icons/login.svg")} alt=".." className="mr-1 mb-1" />
+            Login
+            </Link>
         </li>
         <li className="nav-item ">
-          <Link to="/register">Sign up</Link>
+          <Link to="/register">
+          <img src={require("../../../assets/icons/signup.svg")} alt=".." className="mr-1 mb-1" />
+            Sign up
+            </Link>
         </li>
       </ul>
     );
@@ -36,16 +42,21 @@ class Header extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item mr-4">
-          <Link to="/my-account">My Account</Link>
+          <Link to="/my-account">
+            <img src={require("../../../assets/icons/user.svg")} alt=".." className="mr-1 mb-1" />
+            My Account
+            </Link>
         </li>
         <li className="nav-item mr-4">
           <Link to="" onClick={this.handleOnclick}>
+            <img src={require("../../../assets/icons/logout.svg")} alt=".." className="mr-1 mb-1" />
             Logout
           </Link>
         </li>
         <li className="nav-item ml-2">
           <Link to="/basket" >
-            <i className="fa fa-shopping-cart"></i> {this.props.cartsLength}
+            <img src={require("../../../assets/icons/shopping-cart.svg")} alt=".." className="mr-1 mb-1" />
+            {this.props.cartsLength}
           </Link>
         </li>
       </ul>
@@ -65,7 +76,7 @@ class Header extends Component {
             aria-controls="navbarResponsive"
             aria-label="Toggle navigation"
           >
-            <i className="fa fa-align-justify"></i>
+            <img src={require("../../../assets/icons/down-arrow.svg")} alt=".." className="mr-1 mb-1" />
           </button>
 
           <div className="collapse navbar-collapse" id="navbarResponsive">

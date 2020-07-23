@@ -6,7 +6,6 @@ import store from "./store";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './components/auth/Login';
 import Home from './components/home/Home';
-import * as serviceWorker from "./serviceWorker";
 import SignUp from './components/auth/SignUp';
 import jwtDecode from "jwt-decode";
 import { AUTH_USER } from './actions/types';

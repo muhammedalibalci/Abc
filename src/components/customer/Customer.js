@@ -9,7 +9,6 @@ import Spinner from '../common/spinner/Spinner';
 import AddAddress from './AddAddress';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
 
 class Customer extends Component {
 
@@ -48,7 +47,6 @@ class Customer extends Component {
     render() {
         const { customer, loading } = this.props.customer
         let addressTableDisplay;
-        console.log(loading);
         if (loading) {
             return <Spinner classNames="spinner1" />;
         } else {
@@ -64,7 +62,7 @@ class Customer extends Component {
         return (
             <div className="my-account">
                 <div className="container pt-4">
-                    <CustomerInfo />
+                    <CustomerInfo customer={this.props.customer.customer} />
                     <ToastContainer
                         autoClose={2000}
                         hideProgressBar={true} />

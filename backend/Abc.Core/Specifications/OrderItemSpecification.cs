@@ -1,4 +1,5 @@
-﻿using Abc.Core.Entities;
+﻿using Abc.Core.Data;
+using Abc.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Abc.Core.Specifications
             AddInclude(x => x.ProductDetail.Product);
             AddInclude(x => x.Order);
             AddWhere(x => x.Order.UserId == id);
+
         }
     }
 }

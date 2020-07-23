@@ -1,22 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { CheckBox } from '../common/input/CheckBox';
 
-const ProductFilterSize = ({ productDetails }) => {
+const ProductFilterSize = ({ productDetails, sizeClick, size ,onClickCheckBox }) => {
     return (
         <div >
-            <h5>Size</h5>
-            <div className="form-check" >
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                <label className="form-check-label" htmlFor="exampleCheck1">All</label>
-            </div>
-            {productDetails && productDetails.map(detail => {
-                return (
-                    <div className="form-check" key={detail.id}>
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                        <label className="form-check-label" htmlFor="exampleCheck1">{detail.size}"</label>
-                    </div>
-                )
-            })}
+            <CheckBox
+                productDetails = {productDetails}
+                click = {onClickCheckBox}
+                state = {size}
+                title = "Size"
+                name='size'
+            />
         </div>
     )
 }

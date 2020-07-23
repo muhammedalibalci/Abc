@@ -47,7 +47,8 @@ class Login extends Component {
             <div className="container login-container " >
                 <div className="card shadow mx-auto text-center p-5 w-50">
                     <h3 className="login-title">
-                        <i className="fa fa-user" aria-hidden="true"></i>  Login User
+                        <img src={require("../../assets/icons/login.svg")} alt=".." className="mr-1 mb-1" />
+                        Login User
                     </h3>
                     {this.props.auth.loading && <Spinner classNames="spinner2" />}
                     <span className="err-message">{this.props.error}</span>

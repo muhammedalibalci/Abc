@@ -1,5 +1,6 @@
 ﻿using Abc.API.Errors;
 using Abc.API.Helpers;
+using Abc.Core.Data;
 using Abc.Core.Entities;
 using Abc.Core.Interfaces;
 using AutoMapper;
@@ -31,9 +32,9 @@ namespace Abc.API.Controllers
         }
 
         [HttpGet("{id}/category")]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetAll([FromRoute] int id)
+        public ActionResult<List<Product>> GetAll([FromRoute] int id,[FromQuery] ProductFilter filter)
         {
-            return Ok(await _productService.GetAll(id));
+            return Ok( _productService.GetAll(id,filter));
         }
 
 

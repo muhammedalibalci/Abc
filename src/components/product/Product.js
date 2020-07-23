@@ -42,7 +42,7 @@ class Product extends Component {
         }
         return (
             <div class="pd">
-                <div onClick={()=>this.props.history.push('/products')}>
+                <div onClick={()=>  this.props.history.goBack()}>
                     <i class="fa fa-arrow-circle-left"></i>
                 </div>
                 {productDisplay}

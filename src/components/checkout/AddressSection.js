@@ -1,7 +1,7 @@
 import React from 'react'
 import Payment from './Payment'
 
-export const AddressSection = ({ addresses, onClickCurrentAddress, openModal, currentAddress }) => {
+export const AddressSection = ({ addresses, onClickCurrentAddress, openModal, currentAddress,onClickPay }) => {
     return (
         <div className="col-xl-6 col-md-6 mx-auto">
             <div className="mx-auto">
@@ -50,7 +50,8 @@ export const AddressSection = ({ addresses, onClickCurrentAddress, openModal, cu
                 <button className="btn btn-address btn-sm mt-2" onClick={openModal}>
                     New Address
                 </button>
-                {currentAddress.address1 && <Payment addressId = {currentAddress.id} />}
+                
+                {currentAddress.address1 && <Payment addressId = {currentAddress.id} onClickPay={onClickPay} />}
             </div>
         </div>
     )

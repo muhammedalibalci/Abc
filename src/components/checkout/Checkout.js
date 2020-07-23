@@ -8,14 +8,14 @@ import { AddressSection } from './AddressSection';
 import './Checkout.css'
 import { Summary } from './Summary';
 import AddAddress from '../customer/AddAddress';
-import Payment from './Payment';
 
 class Checkout extends Component {
 
     state = {
         currentAddress: {},
         addressSection: false,
-        amount: 0
+        amount: 0,
+        payLoading: false
     }
 
     componentDidMount() {
@@ -61,6 +61,12 @@ class Checkout extends Component {
         })
     }
 
+    onClickPay = () => {
+        this.setState({
+            payLoading: true
+        })
+    }
+
     render() {
         const { customer, loading } = this.props.customer
         const { currentAddress, amount } = this.state
@@ -75,6 +81,7 @@ class Checkout extends Component {
                     onClickCurrentAddress={this.onClickCurrentAddress}
                     openModal={this.openModal}
                     currentAddress={currentAddress}
+                    onClickPay={this.onClickPay}
                 />
 
             )
@@ -82,6 +89,7 @@ class Checkout extends Component {
         return (
             <div>
                 <h4 className="text-center mt-2">Checkout</h4>
+                {this.state.payLoading && <Spinner classNames="spinner1" />}
                 <div className="row container mt-4">
                     {addressTableDisplay}
                     <AddAddress

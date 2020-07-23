@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getCustomer } from '../../actions/customerAction'
-import JwtDecode from 'jwt-decode';
 import Axios from 'axios';
 import { OrderItem } from './OrderItem';
 import Spinner from '../common/spinner/Spinner';
@@ -35,12 +34,12 @@ class Orders extends Component {
         return (
             <div>
                 <div onClick={() => this.props.history.push('/my-account')}>
-                    <i class="fa fa-arrow-circle-left"></i>
+                    <i className="fa fa-arrow-circle-left"></i>
                 </div>
                 {loading && <Spinner classNames="spinner1"/>}
                 {
                     orders.map(order => {
-                        return <OrderItem order={order} />
+                        return <OrderItem key={order.id} order={order} />
                     })
                 }
             </div>

@@ -21,5 +21,7 @@ namespace Abc.Core.Interfaces
         Task<T> Add(T entity);
         Task<T> Delete(T  entity);
         Task<T> Update(T entity);
+
+        IQueryable<T> GetTable(T entity);
     }
 }

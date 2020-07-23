@@ -34,6 +34,17 @@ export const getProductsByCategory = (categoryId = 1) => async dispatch => {
     })
 };
 
+export const getProductsByFilter = (categoryId,size,color) => async dispatch => {
+    dispatch({ type: PRODUCT_LOADING, payload: true });
+    await Axios.get(`/api/products/${categoryId}/category/?color=${color}&size=${size}`).then(res => {
+        dispatch({ type: PRODUCT_LOADING, payload: false });
+        dispatch({ type: GET_PRODUCTS, payload: res.data });
+    }).catch(err => {
+        dispatch({ type: PRODUCT_LOADING, payload: false });
+        dispatch({ type: GET_ERRORS, payload: err.response });
+    })
+};
+
 export const getProductDetails = (categoryId = 1) => async dispatch => {
     await Axios.get(`/api/products/productDetail/${categoryId}`).then(res => {
         dispatch({ type: GET_PRODUCTS_DETAILS, payload: res.data });

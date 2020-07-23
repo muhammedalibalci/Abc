@@ -73,6 +73,9 @@ namespace Abc.Infrastructure
             return entity;
         }
 
-       
+        public IQueryable<T> GetTable(T entity)
+        {
+            return _context.Set<T>();
+        }
     }
 }
