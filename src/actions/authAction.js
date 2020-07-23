@@ -6,7 +6,7 @@ import Axios from "axios";
 
 export const login = userData => async dispatch => {
   dispatch({ type: AUTH_LOADING, payload: true });
-  await Axios.post(URL_LOGIN, userData)
+  await Axios.post("https://abc-app-api.azurewebsites.net"+URL_LOGIN, userData)
     .then(res => {
       const token = res.data.token
       const user = jwtDecode(token);
@@ -23,7 +23,7 @@ export const login = userData => async dispatch => {
 
 export const signUp = userData => async dispatch => {
   dispatch({ type: AUTH_LOADING, payload: true });
-  await Axios.post(URL_REGISTER, userData)
+  await Axios.post("https://abc-app-api.azurewebsites.net"+URL_REGISTER, userData)
     .then(res => {
       const token = res.data.token
       const user = jwtDecode(token);

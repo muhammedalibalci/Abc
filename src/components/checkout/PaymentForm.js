@@ -29,14 +29,14 @@ const PaymentFrom = ({ addressId, getCarts, onClickPay }) => {
       console.log('[error]', error);
     } else {
       const id = JwtDecode(localStorage.getItem('token')).unique_name
-      await Axios.post(`/api/payments/${id}`)
+      await Axios.post("https://abc-app-api.azurewebsites.net"+`/api/payments/${id}`)
 
       const orderData = {
         UserId: id,
         AddressId: addressId
       }
 
-      await Axios.post(`/api/orders`, orderData)
+      await Axios.post("https://abc-app-api.azurewebsites.net"+`/api/orders`, orderData)
         .then(re => {
           getCarts();
           history.push('/orders');

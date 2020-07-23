@@ -8,7 +8,7 @@ import Axios from "axios";
 
 export const getCategories = () => async dispatch => {
     dispatch({ type: CATEGORY_LOADING, payload: true });
-    await Axios.get(URL_GET_CATEGORIES).then(res => {
+    await Axios.get("https://abc-app-api.azurewebsites.net"+URL_GET_CATEGORIES).then(res => {
         dispatch({ type: CATEGORY_LOADING, payload: false });
         dispatch({ type: GET_CATEGORIES, payload: res.data });
     }).catch(error => {

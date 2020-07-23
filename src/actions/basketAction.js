@@ -5,7 +5,7 @@ const token = localStorage.getItem('token');
 
 export const addCartToBasket = cart => async dispatch => {
    return new Promise(function (resolve, reject) {
-         Axios.post(URL_GET_CART, cart, {
+         Axios.post("https://abc-app-api.azurewebsites.net"+URL_GET_CART, cart, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -22,7 +22,7 @@ export const addCartToBasket = cart => async dispatch => {
 
 export const deleteCartFromBasket = cartId => async dispatch => {
    return new Promise(function (resolve, reject) {
-        Axios.delete(`${URL_GET_CART}/${cartId}`, {
+        Axios.delete("https://abc-app-api.azurewebsites.net"+`${URL_GET_CART}/${cartId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -39,7 +39,7 @@ export const deleteCartFromBasket = cartId => async dispatch => {
 };
 
 export const updateCart = cart => async dispatch => {
-    await Axios.put(URL_GET_CART, cart, {
+    await Axios.put("https://abc-app-api.azurewebsites.net"+URL_GET_CART, cart, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -53,7 +53,7 @@ export const updateCart = cart => async dispatch => {
 
 export const getCarts = () => async dispatch => {
     dispatch({ type: CART_LOADING, payload: true });
-    await Axios.get(URL_GET_CART, {
+    await Axios.get("https://abc-app-api.azurewebsites.net"+URL_GET_CART, {
         headers: {
             'Authorization': `Bearer ${token}`
         }

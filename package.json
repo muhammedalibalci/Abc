@@ -46,7 +46,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://abc-app-api.azurewebsites.net",
   "devDependencies": {
     "concurrently": "^5.2.0",
     "express": "^4.17.1",
