@@ -3,12 +3,12 @@ var app = express();
 var path = require('path');
 var port = process.env.PORT || 5005; 
  
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'main')));
  
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'build')));
+    app.use(express.static(path.join(__dirname, 'main')));
     app.get('*', (req, res) => {
-        res.sendfile(path.join(__dirname = 'build/index.html'));
+        res.sendfile(path.join(__dirname = 'main/index.html'));
     })
 }
  
