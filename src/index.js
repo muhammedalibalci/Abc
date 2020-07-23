@@ -16,9 +16,10 @@ import Product from './components/product/Product';
 import Customer from './components/customer/Customer';
 import Checkout from './components/checkout/Checkout';
 import  Orders  from './components/customer/Orders';
+var dateNow = new Date();
 
 if (localStorage.token) {
-  if (jwtDecode(localStorage.getItem("token")).exp > Date.now()) {
+  if (jwtDecode(localStorage.getItem("token")).exp < dateNow.getDay()) {
     store.dispatch(logout());
     window.location.href = "/login";
   }

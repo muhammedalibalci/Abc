@@ -28,7 +28,7 @@ class Products extends Component {
   }
 
 
-  handleOnClick = (e, cart, notify) => {
+  handleOnClick = (e, cart) => {
     e.preventDefault();
     const data = {
       Quantity: 1,
@@ -36,7 +36,7 @@ class Products extends Component {
     }
 
     this.props.addCartToBasket(data)
-      .then((res) => { notify() })
+      .then((res) => { this.notify() })
       .catch(err => console.log(err))
   }
 
@@ -53,25 +53,18 @@ class Products extends Component {
       [name]: value
     })
   }
-
-  refreshStats = () => {
-    return new Promise((res, rej) => {
-      const { currentCategory, color, size } = this.state
-
-
-    })
-
-  }
-
   onClickFilter =  () => {
     const { currentCategory, color, size } = this.state
      this.props.getProductsByFilter(currentCategory, size, color)
   }
+  notify = () => toast("Product Added Successfully !");
 
   render() {
-    const notify = () => toast("Product Added Successfully !");
     const { products, loading } = this.props.product;
+    const { currentCategory, size, color } = this.state
+
     let productDisplay;
+    
     if (loading) {
       return <Spinner classNames="spinner1" />;
     } else {
@@ -79,15 +72,13 @@ class Products extends Component {
         <ProductItem
           key={product.id}
           handleOnClick={e => {
-            this.handleOnClick(e, product, notify);
+            this.handleOnClick(e, product);
           }}
           product={product}
         />
       ));
     }
 
-
-    const { currentCategory, size, color } = this.state
     return (
       <div className="mb-5">
         <div className="text-center">

@@ -23,7 +23,6 @@ class Header extends Component {
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-
         <li className="nav-item mr-4 ">
           <Link to="/login">
           <img src={require("../../../assets/icons/login.svg")} alt=".." className="mr-1 mb-1" />

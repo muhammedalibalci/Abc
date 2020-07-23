@@ -51,6 +51,7 @@ namespace Abc.API
             services.AddSingleton(typeof(IRepository<>), typeof(EfRepository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IProductRepository<Product>, ProductRepository>();
 
             //Services
             services.AddScoped<ITokenService, TokenService>();

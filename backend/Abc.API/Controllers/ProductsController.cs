@@ -32,9 +32,9 @@ namespace Abc.API.Controllers
         }
 
         [HttpGet("{id}/category")]
-        public ActionResult<List<Product>> GetAll([FromRoute] int id,[FromQuery] ProductFilter filter)
+        public async Task<ActionResult<List<Product>>> GetAll([FromRoute] int id,[FromQuery] ProductFilter filter)
         {
-            return Ok( _productService.GetAll(id,filter));
+            return Ok(await _productService.GetAll(id,filter));
         }
 
 

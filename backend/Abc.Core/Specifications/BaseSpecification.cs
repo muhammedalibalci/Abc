@@ -49,6 +49,7 @@ namespace Abc.Core.Specifications
         {
             Where = where;
         }
+
         protected void ApplyPaging(int skip, int take)
         {
             Skip = skip;

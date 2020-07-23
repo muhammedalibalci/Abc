@@ -5,7 +5,7 @@ const ProductItem = props => {
     const { id, name, price, imageUrl } = props.product;
     const { handleOnClick } = props;
     return (
-        <div className="product-card">
+        <div className="product-card ">
             <div className="product-tumb">
                 <img src={imageUrl} alt="" />
             </div>

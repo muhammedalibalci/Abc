@@ -13,9 +13,11 @@ namespace Abc.Core.Services
     public class ProductService : IProductService
     {
         private IUnitOfWork _unitOfWork;
-        public ProductService(IUnitOfWork unitOfWork)
+        private IProductRepository<Product> _productRepository;
+        public ProductService(IUnitOfWork unitOfWork, IProductRepository<Product> productRepository)
         {
             _unitOfWork = unitOfWork;
+            _productRepository = productRepository;
         }
       
         public async Task<Product> Get(int id)
@@ -26,8 +28,12 @@ namespace Abc.Core.Services
 
         }
 
-        public  List<Product> GetAll(int id,ProductFilter filter)
+        public async  Task<IQueryable<Product>> GetAll(int id,ProductFilter filter)
         {
+            if (String.IsNullOrEmpty(filter.Color) && String.IsNullOrEmpty(filter.Size))
+            {
+                return _productRepository.GetAll(id);
+            }
             var query = _unitOfWork.Repository<Product>().GetTable(new Product());
             var productDetailTable =  _unitOfWork.Repository<ProductDetail>().GetTable(new ProductDetail());
 
@@ -35,20 +41,19 @@ namespace Abc.Core.Services
                     where o.CategoryId == id
                     select o;
 
-            if (String.IsNullOrEmpty(filter.Color) && String.IsNullOrEmpty(filter.Size))
-            {
-                return query.ToList();
-            }
-
             if (filter.Color == "all")
                 filter.Color = null;
 
             if (filter.Size == "all")
                 filter.Size = null;
 
+            var products = _productRepository.GetAll(id);
+
+            
+
             if (!String.IsNullOrEmpty(filter.Color))
             {
-                query = from p in query
+                products = from p in products
                         join oi in productDetailTable on p.Id equals oi.ProductId
                         where oi.Color == filter.Color
                         select p;
@@ -56,12 +61,13 @@ namespace Abc.Core.Services
 
             if (!String.IsNullOrEmpty(filter.Size))
             {
-                query = from p in query
+                products = from p in products
                         join oi in productDetailTable on p.Id equals oi.ProductId
                         where oi.Size == filter.Size
                         select p;
             }
-            return query.ToList();
+
+            return products;
         }
 
         public async Task<IReadOnlyList<ProductDetail>> GetAllProductDetailsByCategoryId(int categoryId)

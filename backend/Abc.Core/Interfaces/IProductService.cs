@@ -10,7 +10,7 @@ namespace Abc.Core.Interfaces
 {
     public interface IProductService
     {
-        List<Product> GetAll(int id, ProductFilter filter);
+        Task<IQueryable<Product>> GetAll(int id, ProductFilter filter);
         Task<IReadOnlyList<ProductDetail>> GetAllProductDetailsByCategoryId(int categoryId);
         Task<Product> Get(int id);
         Task<Product> Add(Product product);
