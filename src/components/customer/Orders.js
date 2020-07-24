@@ -13,7 +13,7 @@ class Orders extends Component {
 
     async componentDidMount() {
         const token = localStorage.getItem('token')
-        await Axios.get('/api/orders', {
+        await Axios.get('https://abc-app-api.azurewebsites.net/api/orders', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
