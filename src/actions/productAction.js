@@ -6,6 +6,7 @@ import {
     GET_PRODUCTS_DETAILS
 } from "./types";
 import {
+    URL,
     URL_GET_PRODUCTS,
 } from "../utils/apiUrl";
 import Axios from "axios";
@@ -13,7 +14,7 @@ import Axios from "axios";
 
 export const getProductById = id => async dispatch => {
     dispatch({ type: PRODUCT_LOADING, payload: true });
-    await Axios.get("https://abc-app-api.azurewebsites.net"+`${URL_GET_PRODUCTS}/${id}`).then(res => {
+    await Axios.get(URL+`${URL_GET_PRODUCTS}/${id}`).then(res => {
         dispatch({ type: PRODUCT_LOADING, payload: false });
         dispatch({ type: GET_PRODUCT, payload: res.data });
     }).catch(err => {
@@ -25,7 +26,7 @@ export const getProductById = id => async dispatch => {
 export const getProductsByCategory = (categoryId = 1) => async dispatch => {
 
     dispatch({ type: PRODUCT_LOADING, payload: true });
-    await Axios.get("https://abc-app-api.azurewebsites.net"+`/api/products/${categoryId}/category`).then(res => {
+    await Axios.get(URL+`/api/products/${categoryId}/category`).then(res => {
         dispatch({ type: PRODUCT_LOADING, payload: false });
         dispatch({ type: GET_PRODUCTS, payload: res.data });
     }).catch(err => {
@@ -36,7 +37,7 @@ export const getProductsByCategory = (categoryId = 1) => async dispatch => {
 
 export const getProductsByFilter = (categoryId,size,color) => async dispatch => {
     dispatch({ type: PRODUCT_LOADING, payload: true });
-    await Axios.get("https://abc-app-api.azurewebsites.net"+`/api/products/${categoryId}/category/?color=${color}&size=${size}`).then(res => {
+    await Axios.get(URL+`/api/products/${categoryId}/category/?color=${color}&size=${size}`).then(res => {
         dispatch({ type: PRODUCT_LOADING, payload: false });
         dispatch({ type: GET_PRODUCTS, payload: res.data });
     }).catch(err => {
@@ -46,7 +47,7 @@ export const getProductsByFilter = (categoryId,size,color) => async dispatch => 
 };
 
 export const getProductDetails = (categoryId = 1) => async dispatch => {
-    await Axios.get("https://abc-app-api.azurewebsites.net"+`/api/products/productDetail/${categoryId}`).then(res => {
+    await Axios.get(URL+`/api/products/productDetail/${categoryId}`).then(res => {
         dispatch({ type: GET_PRODUCTS_DETAILS, payload: res.data });
     }).catch(err => {
         dispatch({ type: GET_ERRORS, payload: err.response });

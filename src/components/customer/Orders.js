@@ -4,6 +4,7 @@ import { getCustomer } from '../../actions/customerAction'
 import Axios from 'axios';
 import { OrderItem } from './OrderItem';
 import Spinner from '../common/spinner/Spinner';
+import { URL } from '../../utils/apiUrl';
 class Orders extends Component {
     state = {
         orders: [],
@@ -13,7 +14,7 @@ class Orders extends Component {
 
     async componentDidMount() {
         const token = localStorage.getItem('token')
-        await Axios.get('https://abc-app-api.azurewebsites.net/api/orders', {
+        await Axios.get(URL, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

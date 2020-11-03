@@ -5,6 +5,7 @@ import JwtDecode from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
 import { getCarts } from '../../actions/basketAction'
 import { connect } from 'react-redux';
+import { URL } from '../../utils/apiUrl';
 
 
 const PaymentFrom = ({ addressId, getCarts, onClickPay }) => {
@@ -29,14 +30,14 @@ const PaymentFrom = ({ addressId, getCarts, onClickPay }) => {
       console.log('[error]', error);
     } else {
       const id = JwtDecode(localStorage.getItem('token')).unique_name
-      await Axios.post("https://abc-app-api.azurewebsites.net"+`/api/payments/${id}`)
+      await Axios.post(URL+`/api/payments/${id}`)
 
       const orderData = {
         UserId: id,
         AddressId: addressId
       }
 
-      await Axios.post("https://abc-app-api.azurewebsites.net"+`/api/orders`, orderData)
+      await Axios.post(URL+`/api/orders`, orderData)
         .then(re => {
           getCarts();
           history.push('/orders');

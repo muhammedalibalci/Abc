@@ -39,12 +39,11 @@ namespace Abc.API
                                                                    .AllowAnyMethod()
                                                                     .AllowAnyHeader()));
 
-            services.AddDbContext<EfDbContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), options =>
-                    {
-                        options.SetPostgresVersion(new Version("9.6"));
-                        options.MigrationsAssembly("Abc.API");
-                    }));
+           
+            var databaseConfiguration = Configuration.GetConnectionString("DefaultConnection") +
+                "password=" + Configuration["DbPassword"];
+
+            services.AddDbContext<EfDbContext>(options => options.UseNpgsql(databaseConfiguration), ServiceLifetime.Scoped);
 
             services.AddAutoMapper(typeof(Startup));
 

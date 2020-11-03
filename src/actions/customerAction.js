@@ -6,7 +6,7 @@ import {
     ADD_ADDRESS_LOADING,
     CLEAR_ERRORS
 } from './types';
-import { URL_CUSTOMER } from '../utils/apiUrl';
+import { URL, URL_CUSTOMER } from '../utils/apiUrl';
 import Axios from 'axios';
 
 const token = localStorage.getItem('token')
@@ -14,7 +14,7 @@ const token = localStorage.getItem('token')
 export const getCustomer = (id) => async dispatch => {
     dispatch({ type: CUSTOMER_LOADING, payload: true });
     dispatch({ type: CLEAR_ERRORS });
-    await Axios.get("https://abc-app-api.azurewebsites.net"+`${URL_CUSTOMER}/${id}`).then(res => {
+    await Axios.get(URL+`${URL_CUSTOMER}/${id}`).then(res => {
         dispatch({ type: GET_CUSTOMER, payload: res.data });
     }).catch(err => {
         console.log(err);
@@ -24,7 +24,7 @@ export const getCustomer = (id) => async dispatch => {
 export const addCustomerAddress = addressData => async dispatch => {
     return new Promise((resolve, reject) => {
         dispatch({ type: ADD_ADDRESS_LOADING, payload: true });
-        Axios.post("https://abc-app-api.azurewebsites.net"+`${URL_CUSTOMER}/address`, addressData, {
+        Axios.post(URL+`${URL_CUSTOMER}/address`, addressData, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -44,7 +44,7 @@ export const addCustomerAddress = addressData => async dispatch => {
 export const deleteCustomerAddress = id => async dispatch => {
     return new Promise((resolve, reject) => {
         dispatch({ type: CUSTOMER_LOADING, payload: true });
-        Axios.delete("https://abc-app-api.azurewebsites.net"+`${URL_CUSTOMER}/${id}/address`, {
+        Axios.delete(URL+`${URL_CUSTOMER}/${id}/address`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
